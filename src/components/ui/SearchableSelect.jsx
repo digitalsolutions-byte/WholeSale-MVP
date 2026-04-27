@@ -1,0 +1,112 @@
+import React from 'react';
+import { Autocomplete, TextField, InputAdornment, Box, alpha, useTheme } from '@mui/material';
+
+const SearchableSelect = ({
+    label,
+    options = [],
+    value,
+    onChange,
+    placeholder = 'Search & select...',
+    error,
+    containerClassName = "",
+    icon,
+    name,
+    loading = false,
+    onSearch,
+    ...props
+}) => {
+    const theme = useTheme();
+    const [inputValue, setInputValue] = React.useState('');
+    const accentColor = theme.palette.accent.main;
+
+    React.useEffect(() => {
+        const selectedOption = options.find(opt => opt.value === value);
+        if (selectedOption) {
+            setInputValue(selectedOption.label || '');
+        } else if (!value) {
+            setInputValue('');
+        }
+    }, [value, options]);
+
+    return (
+        <Box sx={{ width: '100%' }} className={containerClassName}>
+            <Autocomplete
+                id={name}
+                options={options}
+                getOptionLabel={(option) => {
+                    if (typeof option === 'string') return option;
+                    return option?.label || '';
+                }}
+                value={options.find(opt => opt.value === value) || null}
+                loading={loading}
+                inputValue={inputValue}
+                onInputChange={(event, newInputValue, reason) => {
+                    if (reason === 'input' || reason === 'clear') {
+                        setInputValue(newInputValue);
+                        if (onSearch) onSearch(newInputValue);
+                    }
+                }}
+                filterOptions={onSearch ? (x) => x : undefined}
+                onChange={(event, newValue) => {
+                    if (onChange) {
+                        onChange({
+                            target: {
+                                name,
+                                value: newValue ? newValue.value : ''
+                            }
+                        });
+                    }
+                    if (newValue) {
+                        setInputValue(newValue.label || '');
+                    } else {
+                        setInputValue('');
+                    }
+                }}
+                renderInput={(params) => (
+                    <TextField
+                        {...params}
+                        label={label}
+                        placeholder={placeholder}
+                        error={!!error}
+                        helperText={error ? error.message : null}
+                        variant="outlined"
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                        InputProps={{
+                            ...params.InputProps,
+                            endAdornment: (
+                                <>
+                                    {params.InputProps.endAdornment}
+                                    {icon && (
+                                        <InputAdornment position="end" sx={{ mr: 1 }}>
+                                            {icon}
+                                        </InputAdornment>
+                                    )}
+                                </>
+                            ),
+                        }}
+                        sx={{
+                            '& .MuiOutlinedInput-root': {
+                                bgcolor: alpha(theme.palette.primary.main, 0.02),
+                                '& fieldset': {
+                                    borderColor: alpha(theme.palette.primary.main, 0.1),
+                                },
+                                '&:hover fieldset': {
+                                    borderColor: accentColor,
+                                },
+                            },
+                            '& .MuiInputLabel-root': {
+                                fontWeight: 700,
+                                fontSize: '0.9rem',
+                            }
+                        }}
+                    />
+                )}
+                {...props}
+            />
+        </Box>
+    );
+};
+
+export default SearchableSelect;
