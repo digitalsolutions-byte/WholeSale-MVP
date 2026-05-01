@@ -117,3 +117,5 @@ export const BusinessInformation = ({ formik, wrapInput, configs, isReadOnlyMode
         </div>
     );
 };
+
+

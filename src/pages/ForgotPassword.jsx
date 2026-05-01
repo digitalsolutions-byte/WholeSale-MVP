@@ -143,3 +143,5 @@ const ForgotPassword = ({ type = 'employee' }) => {
 };
 
 export default ForgotPassword;
+
+

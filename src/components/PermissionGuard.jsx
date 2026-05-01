@@ -35,3 +35,5 @@ const PermissionGuard = ({ children, requiredPermission }) => {
 };
 
 export default PermissionGuard;
+
+

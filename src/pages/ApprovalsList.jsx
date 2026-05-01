@@ -127,7 +127,7 @@ const ApprovalsList = () => {
                                 approvals.map((approval) => (
                                     <tr
                                         key={approval._id}
-                                        className="group hover:bg-amber-50/30 transition-all cursor-pointer"
+                                        className="group hover:bg-erp-accent/5/30 transition-all cursor-pointer"
                                         onClick={() => handleRowClick(approval._id)}
                                     >
                                         <td className="p-6">
@@ -205,3 +205,5 @@ const ApprovalsList = () => {
 };
 
 export default ApprovalsList;
+
+

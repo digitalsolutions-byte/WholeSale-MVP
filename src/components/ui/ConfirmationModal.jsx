@@ -26,7 +26,7 @@ const ConfirmationModal = ({
         warning: {
             icon: "mdi:alert-outline",
             color: "text-erp-accent",
-            bg: "bg-amber-50",
+            bg: "bg-erp-accent/5",
             button: "bg-erp-accent hover:bg-amber-600 shadow-erp-accent/30"
         },
         info: {
@@ -89,3 +89,5 @@ const ConfirmationModal = ({
 };
 
 export default ConfirmationModal;
+
+

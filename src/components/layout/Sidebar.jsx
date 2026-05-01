@@ -9,6 +9,7 @@ import {
     List,
     ListItem,
     ListItemButton,
+    useMediaQuery,
     ListItemIcon,
     ListItemText,
     Collapse,
@@ -25,6 +26,7 @@ import { logOut, selectCurrentUser } from '../../store/slices/authSlice';
 import { hasAccess } from '../../routes/permissions';
 import { resetRegistration } from '../../store/slices/customerRegistrationSlice';
 import logo from '../../assets/logo.png';
+
 
 const navItems = [
     { label: 'Dashboard', icon: 'lucide:layout-dashboard', path: PATHS.ROOT },
@@ -127,6 +129,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         }
     };
 
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
     const isParentActive = (item) => {
         return item.subItems?.some(sub => sub.path === location.pathname);
     };
@@ -148,12 +152,17 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     return (
         <>
             <Drawer
-                variant="persistent"
+                variant={isMobile ? "temporary" : "persistent"}
                 anchor="left"
                 open={isOpen}
+                onClose={toggleSidebar}
                 sx={{
-                    width: drawerWidth,
+                    width: isOpen && !isMobile ? drawerWidth : 0,
                     flexShrink: 0,
+                    transition: theme.transitions.create('width', {
+                        easing: theme.transitions.easing.sharp,
+                        duration: theme.transitions.duration.enteringScreen,
+                    }),
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
                         boxSizing: 'border-box',
@@ -161,7 +170,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                         boxShadow: '4px 0 24px rgba(0,0,0,0.02)',
                         background: '#FFFFFF',
                         display: 'flex',
-                        flexDirection: 'col',
+                        flexDirection: 'column',
                     },
                 }}
             >
@@ -188,20 +197,23 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                                                     borderRadius: '12px',
                                                     py: 1.5,
                                                     px: 2,
-                                                    boxShadow: isActive ? " rgba(255, 255, 255, 1) 0px 50px 100px -20px, rgba(255, 255, 255, 0.3) 0px 30px 60px -30px, rgba(255, 255, 255, 0.35) 0px -2px 6px 0px inset" : "",
-                                                    backgroundColor: isActive ? '#e46323ff' : 'transparent',
+                                                    backgroundColor: isActive ? 'primary.dark' : 'transparent',
                                                     color: isActive ? 'white' : 'text.primary',
                                                     '&:hover': {
-                                                        backgroundColor: isActive ? 'secondary.main' : alpha(theme.palette.primary.main, 0.05),
+                                                        backgroundColor: isActive ? 'primary.dark' : alpha(theme.palette.primary.main, 0.05),
+                                                        opacity: 0.9
                                                     },
                                                 }}
                                             >
                                                 {renderNavIcon(item.icon, isActive)}
                                                 <ListItemText
                                                     primary={item.label}
+
+
                                                     primaryTypographyProps={{
                                                         fontWeight: isActive ? 700 : 500,
-                                                        fontSize: '0.95rem'
+                                                        fontSize: '0.95rem',
+                                                        color: isActive ? "white" : "text.primary"
                                                     }}
                                                 />
                                                 <Icon
@@ -218,6 +230,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                                             <ListItemButton
                                                 component={NavLink}
                                                 to={item.path}
+                                                onClick={() => isMobile && toggleSidebar()}
                                                 sx={{
                                                     borderRadius: '12px',
                                                     py: 1.5,
@@ -241,7 +254,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                                                     primary={item.label}
                                                     primaryTypographyProps={{
                                                         fontWeight: isActive ? 700 : 500,
-                                                        fontSize: '0.95rem'
+                                                        fontSize: '0.95rem',
+                                                        color: isActive ? "white" : "text.primary"
                                                     }}
                                                 />
                                             </ListItemButton>
@@ -258,6 +272,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                                                             key={sub.path}
                                                             component={NavLink}
                                                             to={sub.path}
+                                                            onClick={() => isMobile && toggleSidebar()}
                                                             sx={{
                                                                 borderRadius: '0 12px 12px 0',
                                                                 ml: 0,
@@ -311,45 +326,32 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 </Box>
             </Drawer>
 
-            {/* Edge Toggle Button */}
-            <IconButton
-                onClick={toggleSidebar}
-                sx={{
-                    position: 'fixed',
-                    top: '50%',
-                    left: isOpen ? drawerWidth - 12 : -12,
-                    zIndex: 1300,
-                    backgroundColor: 'accent.main',
-                    color: 'white',
-                    width: 32,
-                    height: 48,
-                    borderRadius: '0 12px 12px 0',
-                    transform: 'translateY(-50%)',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    boxShadow: '4px 0 12px rgba(255, 99, 0, 0.3)',
-                    '&:hover': {
-                        backgroundColor: 'accent.dark',
-                        width: 40,
-                        left: isOpen ? drawerWidth - 8 : -8,
-                    }
-                }}
-            >
-                <Icon icon={isOpen ? 'lucide:chevron-left' : 'lucide:chevron-right'} style={{ fontSize: '20px' }} />
-            </IconButton>
-
-            {/* Mobile Backdrop */}
-            {isOpen && (
-                <Box
+            {/* Edge Toggle Button - Only show on desktop */}
+            {!isMobile && (
+                <IconButton
                     onClick={toggleSidebar}
                     sx={{
-                        display: { xs: 'block', lg: 'none' },
                         position: 'fixed',
-                        inset: 0,
-                        zIndex: 1200,
-                        backgroundColor: 'rgba(0,0,0,0.3)',
-                        backdropFilter: 'blur(4px)'
+                        top: '50%',
+                        left: isOpen ? drawerWidth - 12 : 0,
+                        zIndex: 1300,
+                        backgroundColor: 'primary.main',
+                        color: 'white',
+                        width: 32,
+                        height: 48,
+                        borderRadius: '0 12px 12px 0',
+                        transform: 'translateY(-50%)',
+                        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                        boxShadow: '4px 0 12px rgba(0, 162, 255, 0.3)',
+                        '&:hover': {
+                            backgroundColor: 'accent.dark',
+                            width: 40,
+                            left: isOpen ? drawerWidth - 8 : 0,
+                        }
                     }}
-                />
+                >
+                    <Icon icon={isOpen ? 'lucide:chevron-left' : 'lucide:chevron-right'} style={{ fontSize: '20px' }} />
+                </IconButton>
             )}
         </>
     );

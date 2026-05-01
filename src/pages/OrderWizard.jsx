@@ -735,13 +735,13 @@ const OrderWizard = () => {
             })}
 
             <div className="flex flex-wrap col-span-full items-center justify-center gap-4 py-2">
-                <p className="text-sm font-black text-erp-accent uppercase tracking-widest bg-orange-50/50 px-4 py-2 rounded-xl border border-orange-100/50 inline-block">
+                <p className="text-sm font-black text-erp-accent uppercase tracking-widest bg-erp-accent/5/50 px-4 py-2 rounded-xl border border-orange-100/50 inline-block">
                     Customer Balance: <span className="text-gray-900 ml-2">₹ {selectedCustomer?.customerBalance || '0.00'}</span>
                 </p>
-                <p className="text-sm font-black text-erp-accent uppercase tracking-widest bg-orange-50/50 px-4 py-2 rounded-xl border border-orange-100/50 inline-block">
+                <p className="text-sm font-black text-erp-accent uppercase tracking-widest bg-erp-accent/5/50 px-4 py-2 rounded-xl border border-orange-100/50 inline-block">
                     Customer Credit Limit: <span className="text-gray-900 ml-2">₹ {selectedCustomer?.creditLimit || '0.00'}</span>
                 </p>
-                <p className="text-sm font-black text-erp-accent uppercase tracking-widest bg-orange-50/50 px-4 py-2 rounded-xl border border-orange-100/50 inline-block">
+                <p className="text-sm font-black text-erp-accent uppercase tracking-widest bg-erp-accent/5/50 px-4 py-2 rounded-xl border border-orange-100/50 inline-block">
                     Customer Credit Used: <span className="text-gray-900 ml-2">₹ {selectedCustomer?.creditUsed || '0.00'}</span>
                 </p>
             </div>
@@ -809,9 +809,9 @@ const OrderWizard = () => {
                         const eyeResolve = resolutionResult?.resolved?.resolved?.find(r => r.side === side);
 
                         return (
-                            <div key={side} className={`grid grid-cols-6 border-b border-gray-100 last:border-b-0 items-center ${side === 'L' ? 'bg-orange-50/20' : ''} ${isDisabled ? 'opacity-30' : ''}`}>
+                            <div key={side} className={`grid grid-cols-6 border-b border-gray-100 last:border-b-0 items-center ${side === 'L' ? 'bg-erp-accent/5/20' : ''} ${isDisabled ? 'opacity-30' : ''}`}>
                                 <div
-                                    className={`py-4 flex flex-col items-center justify-center border-r border-gray-100 gap-1 overflow-hidden transition-all duration-300 ${formik.values.powerMode === 'single' ? 'cursor-pointer hover:bg-orange-50/50' : ''}`}
+                                    className={`py-4 flex flex-col items-center justify-center border-r border-gray-100 gap-1 overflow-hidden transition-all duration-300 ${formik.values.powerMode === 'single' ? 'cursor-pointer hover:bg-erp-accent/5/50' : ''}`}
                                     onClick={() => {
                                         if (formik.values.powerMode === 'single') {
                                             formik.setFieldValue('selectedSide', side);
@@ -842,7 +842,7 @@ const OrderWizard = () => {
                                                     Base: {eyeResolve.baseCurve}
                                                 </span>
                                             )}
-                                            <span className="text-[7px] text-orange-600 font-extrabold uppercase tracking-tighter truncate max-w-[50px]">
+                                            <span className="text-[7px] text-erp-accent/90 font-extrabold uppercase tracking-tighter truncate max-w-[50px]">
                                                 {eyeResolve.supplier}
                                             </span>
                                         </div>
@@ -886,7 +886,7 @@ const OrderWizard = () => {
                             return (
                                 <div key={side} className={`grid grid-cols-3 border-b border-gray-100 last:border-b-0 items-center ${isDisabled ? 'opacity-30' : ''}`}>
                                     <div
-                                        className={`py-4 flex flex-col items-center justify-center border-r border-gray-100 gap-1 overflow-hidden transition-all duration-300 ${formik.values.powerMode === 'single' ? 'cursor-pointer hover:bg-orange-50/50' : ''}`}
+                                        className={`py-4 flex flex-col items-center justify-center border-r border-gray-100 gap-1 overflow-hidden transition-all duration-300 ${formik.values.powerMode === 'single' ? 'cursor-pointer hover:bg-erp-accent/5/50' : ''}`}
                                         onClick={() => {
                                             if (formik.values.powerMode === 'single') {
                                                 formik.setFieldValue('selectedSide', side);
@@ -1019,7 +1019,7 @@ const OrderWizard = () => {
                     <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                         <div className="space-y-1">
                             <h5 className="text-sm font-black text-gray-800 uppercase tracking-widest flex items-center gap-2">
-                                <Icon icon="mdi:truck-delivery" className="text-orange-500" />
+                                <Icon icon="mdi:truck-delivery" className="text-erp-accent" />
                                 Identify Suppliers & Base Type
                             </h5>
                             <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider italic">Demo Tool: Check which supplier and base curve will be used for this selection.</p>
@@ -1044,7 +1044,7 @@ const OrderWizard = () => {
                                         {resolutionResult.resolved.resolved.map((item, idx) => (
                                             <div key={idx} className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex items-center justify-between hover:shadow-md transition-shadow">
                                                 <div className="flex items-center gap-3">
-                                                    <div className="w-8 h-8 rounded-lg bg-orange-500 flex items-center justify-center font-black text-white italic shadow-sm">
+                                                    <div className="w-8 h-8 rounded-lg bg-erp-accent flex items-center justify-center font-black text-white italic shadow-sm">
                                                         {item.side}
                                                     </div>
                                                     <div>
@@ -1079,7 +1079,7 @@ const OrderWizard = () => {
                                             <div className="text-[9px] font-black text-gray-400 uppercase tracking-widest text-right">Status</div>
                                         </div>
                                         {resolutionResult.resolved.suppliers.map((sup, sidx) => (
-                                            <div key={sidx} className="grid grid-cols-3 py-2.5 px-4 border-b border-gray-50 last:border-0 hover:bg-orange-50/10 transition-colors items-center">
+                                            <div key={sidx} className="grid grid-cols-3 py-2.5 px-4 border-b border-gray-50 last:border-0 hover:bg-erp-accent/5/10 transition-colors items-center">
                                                 <div className="text-xs font-bold text-gray-700">{sup.name}</div>
                                                 <div className="text-center">
                                                     <span className="px-2 py-0.5 bg-gray-100 rounded-full text-[9px] font-black text-gray-500">
@@ -1272,7 +1272,7 @@ const OrderWizard = () => {
                                                     ? 'bg-erp-accent text-white'
                                                     : isCompleted
                                                         ? 'bg-green-500 text-white'
-                                                        : 'bg-gray-100 text-gray-400 group-hover:bg-orange-50'
+                                                        : 'bg-gray-100 text-gray-400 group-hover:bg-erp-accent/5'
                                                     }`}>
                                                     {isCompleted ? <Icon icon="mdi:check" className="text-xl" /> : <span className="font-black  text-lg">{idx + 1}</span>}
                                                 </div>
@@ -1286,7 +1286,7 @@ const OrderWizard = () => {
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 ${isActive ? 'bg-orange-50 rotate-180' : 'bg-gray-50'}`}>
+                                            <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 ${isActive ? 'bg-erp-accent/5 rotate-180' : 'bg-gray-50'}`}>
                                                 <Icon icon="mdi:chevron-down" className={`text-xl ${isActive ? 'text-erp-accent' : 'text-gray-400'}`} />
                                             </div>
                                         </button>
@@ -1371,3 +1371,5 @@ const OrderWizard = () => {
 };
 
 export default OrderWizard;
+
+

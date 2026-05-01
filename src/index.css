@@ -55,11 +55,11 @@ body {
 
 /* Custom Utilities */
 @theme {
-  --color-erp-primary: #000000;
-  --color-erp-secondary: #D9D9D9;
-  --color-erp-accent: #FF6300;
-  --color-erp-dark: #1A1A1A;
-  --color-erp-danger: #E74C3C;
+  --color-erp-primary: var(--mui-erp-primary, #1F618D);
+  --color-erp-secondary: var(--mui-erp-secondary, #3498DB);
+  --color-erp-accent: var(--mui-erp-accent, #2980B9);
+  --color-erp-dark: var(--mui-erp-dark, #1A1A1A);
+  --color-erp-danger: var(--mui-erp-danger, #E74C3C);
   --font-sans: 'Montserrat', system-ui, sans-serif;
 }
 

@@ -14,6 +14,33 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
+import { useTheme } from '@mui/material/styles';
+import { useEffect } from 'react';
+
+// Sync MUI theme colors with Tailwind CSS variables
+const ThemeVariableSync = ({ children }) => {
+  const theme = useTheme();
+  
+  useEffect(() => {
+    const root = document.documentElement;
+    const erpColors = theme.palette.erp || {};
+    
+    // Sync ERP specific colors
+    Object.entries(erpColors).forEach(([key, value]) => {
+      root.style.setProperty(`--mui-erp-${key}`, value);
+    });
+    
+    // Sync main palette colors
+    root.style.setProperty('--mui-primary-main', theme.palette.primary.main);
+    root.style.setProperty('--mui-secondary-main', theme.palette.secondary.main);
+    root.style.setProperty('--mui-background-default', theme.palette.background.default);
+    root.style.setProperty('--mui-background-paper', theme.palette.background.paper);
+    root.style.setProperty('--mui-text-primary', theme.palette.text.primary);
+    root.style.setProperty('--mui-text-secondary', theme.palette.text.secondary);
+  }, [theme]);
+
+  return children;
+};
 
 function App() {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -71,18 +98,22 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <BrowserRouter>
-          <div className="app-root min-h-screen bg-gray-50 text-gray-900 font-sans">
-            <Routes>
-              {renderRoutes(routesConfig)}
-            </Routes>
-          </div>
-          <ToastContainer position="top-right" autoClose={3000} />
-        </BrowserRouter>
-      </LocalizationProvider>
+      <ThemeVariableSync>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <BrowserRouter>
+            <div className="app-root min-h-screen bg-gray-50 text-gray-900 font-sans">
+              <Routes>
+                {renderRoutes(routesConfig)}
+              </Routes>
+            </div>
+            <ToastContainer position="top-right" autoClose={3000} />
+          </BrowserRouter>
+        </LocalizationProvider>
+      </ThemeVariableSync>
     </ThemeProvider>
   );
 }
 
 export default App;
+
+

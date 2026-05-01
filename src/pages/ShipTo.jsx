@@ -194,7 +194,7 @@ const ShipTo = () => {
                     </div>
 
                     {selectedCustomer && (
-                        <div className="flex flex-wrap gap-6 bg-amber-50 rounded-2xl p-4 border border-amber-100 flex-1 w-full">
+                        <div className="flex flex-wrap gap-6 bg-erp-accent/5 rounded-2xl p-4 border border-erp-accent/10 flex-1 w-full">
                             <div>
                                 <p className="text-xs text-erp-accent/80 font-bold uppercase tracking-wider">Customer ID</p>
                                 <p className="text-gray-900 font-semibold">{selectedCustomer.customerCode || 'N/A'}</p>
@@ -404,3 +404,5 @@ const ShipTo = () => {
 };
 
 export default ShipTo;
+
+

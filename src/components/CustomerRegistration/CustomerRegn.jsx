@@ -100,3 +100,5 @@ export const CustomerRegn = ({ wrapInput, configs, formValues, formik, dispatch,
         </div>
     );
 };
+
+

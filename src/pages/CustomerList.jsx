@@ -394,7 +394,7 @@ const CustomerList = () => {
                 <div className="flex items-end self-end w-full md:w-auto mb-1">
                     <button
                         onClick={handleResetFilters}
-                        className="flex items-center justify-center gap-2 text-gray-400 hover:text-erp-accent/80 px-5 py-2.5 rounded-full hover:bg-amber-50 transition-all duration-300 font-black text-[10px] uppercase tracking-widest group border border-transparent hover:border-amber-100 shadow-sm hover:shadow-md w-full md:w-auto"
+                        className="flex items-center justify-center gap-2 text-gray-400 hover:text-erp-accent/80 px-5 py-2.5 rounded-full hover:bg-erp-accent/5 transition-all duration-300 font-black text-[10px] uppercase tracking-widest group border border-transparent hover:border-erp-accent/10 shadow-sm hover:shadow-md w-full md:w-auto"
                     >
                         <Icon icon="mdi:refresh" className="text-lg group-hover:rotate-180 transition-transform duration-700" />
                         Clear Filters
@@ -428,7 +428,7 @@ const CustomerList = () => {
                                 {customers.map((cust) => (
                                     <React.Fragment key={cust._id}>
                                         <tr
-                                            className={`border-b border-gray-100 last:border-b-0 hover:bg-amber-50/20 transition-all h-16 cursor-pointer ${expandedRows.has(cust._id) ? 'bg-amber-50/10' : ''}`}
+                                            className={`border-b border-gray-100 last:border-b-0 hover:bg-erp-accent/5/20 transition-all h-16 cursor-pointer ${expandedRows.has(cust._id) ? 'bg-erp-accent/5/10' : ''}`}
                                             onClick={() => toggleRow(cust._id)}
                                         >
                                             <td className="px-4 py-2 text-center border-r border-gray-50">
@@ -480,7 +480,7 @@ const CustomerList = () => {
                                             <td className="px-4 py-2 text-center relative" onClick={(e) => e.stopPropagation()}>
                                                 <button
                                                     onClick={() => setActiveActionMenu(activeActionMenu === cust._id ? null : cust._id)}
-                                                    className={`p-2 rounded-xl transition-all ${activeActionMenu === cust._id ? 'bg-erp-accent text-white shadow-lg' : 'text-gray-400 hover:text-erp-accent hover:bg-amber-50'}`}
+                                                    className={`p-2 rounded-xl transition-all ${activeActionMenu === cust._id ? 'bg-erp-accent text-white shadow-lg' : 'text-gray-400 hover:text-erp-accent hover:bg-erp-accent/5'}`}
                                                 >
                                                     <Icon icon="mdi:dots-vertical" className="w-6 h-6" />
                                                 </button>
@@ -495,7 +495,7 @@ const CustomerList = () => {
                                                         <div className="absolute right-full top-1/2 -translate-y-1/2 mr-2 z-[70] bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden min-w-[140px] animate-in fade-in slide-in-from-right-4 duration-200">
                                                             <button
                                                                 onClick={() => { handleViewDetails(cust._id); setActiveActionMenu(null); }}
-                                                                className="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold text-gray-600 hover:bg-amber-50 hover:text-erp-accent/80 transition-colors"
+                                                                className="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold text-gray-600 hover:bg-erp-accent/5 hover:text-erp-accent/80 transition-colors"
                                                             >
                                                                 <Icon icon="mdi:eye" className="text-lg" />
                                                                 View
@@ -521,7 +521,7 @@ const CustomerList = () => {
                                                             {isFinance && (cust.approvalStatus === 'PENDING_FINANCE' || !cust.approvalStatus) && (
                                                                 <button
                                                                     onClick={() => handleCorrectionClick(cust)}
-                                                                    className="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold text-erp-accent/80 hover:bg-amber-50 transition-colors border-t border-gray-50"
+                                                                    className="w-full flex items-center gap-3 px-4 py-3 text-xs font-bold text-erp-accent/80 hover:bg-erp-accent/5 transition-colors border-t border-gray-50"
                                                                 >
                                                                     <Icon icon="mdi:comment-alert" className="text-lg" />
                                                                     Correction
@@ -541,7 +541,7 @@ const CustomerList = () => {
                                                         <div className="grid grid-cols-4 gap-12">
                                                             {/* Detailed Columns */}
                                                             <div className="space-y-6">
-                                                                <h4 className="text-[11px] font-black text-erp-accent/80 uppercase tracking-widest border-b border-amber-100 pb-2">Business Info</h4>
+                                                                <h4 className="text-[11px] font-black text-erp-accent/80 uppercase tracking-widest border-b border-erp-accent/10 pb-2">Business Info</h4>
                                                                 <DetailItem label="Full Shop Name" value={cust.shopName} />
                                                                 <DetailItem label="Owner Full Name" value={cust.ownerName} />
                                                                 {/* <div className="flex items-center gap-2 group/id cursor-pointer" onClick={(e) => { e.stopPropagation(); copyToClipboard(cust.username || cust._id); }}>
@@ -553,7 +553,7 @@ const CustomerList = () => {
                                                             </div>
 
                                                             <div className="space-y-6">
-                                                                <h4 className="text-[11px] font-black text-erp-accent/80 uppercase tracking-widest border-b border-amber-100 pb-2">Contact Details</h4>
+                                                                <h4 className="text-[11px] font-black text-erp-accent/80 uppercase tracking-widest border-b border-erp-accent/10 pb-2">Contact Details</h4>
                                                                 <DetailItem label="Business Email" value={cust.businessEmail || cust.emailId} />
                                                                 <DetailItem label="Primary Phone" value={cust.mobileNo1} />
                                                                 <DetailItem label="Secondary Phone" value={cust.mobileNo2} />
@@ -561,7 +561,7 @@ const CustomerList = () => {
                                                             </div>
 
                                                             <div className="space-y-6">
-                                                                <h4 className="text-[11px] font-black text-erp-accent/80 uppercase tracking-widest border-b border-amber-100 pb-2">Logistics & Sales</h4>
+                                                                <h4 className="text-[11px] font-black text-erp-accent/80 uppercase tracking-widest border-b border-erp-accent/10 pb-2">Logistics & Sales</h4>
                                                                 <DetailItem label="Zone / Region" value={cust.zone?.name || cust.zone} />
                                                                 <DetailItem label="Sales Person" value={cust.salesPerson?.name || cust.salesPerson} />
                                                                 <DetailItem label="Courier" value={cust.courierName?.name || cust.courierName} />
@@ -569,7 +569,7 @@ const CustomerList = () => {
                                                             </div>
 
                                                             <div className="space-y-6">
-                                                                <h4 className="text-[11px] font-black text-erp-accent/80 uppercase tracking-widest border-b border-amber-100 pb-2">Account Status</h4>
+                                                                <h4 className="text-[11px] font-black text-erp-accent/80 uppercase tracking-widest border-b border-erp-accent/10 pb-2">Account Status</h4>
                                                                 <DetailItem label="Credit Limit" value={cust?.creditLimit ? `₹${cust.creditLimit.toLocaleString()}` : '---'} />
                                                                 <DetailItem label="Credit Days" value={cust?.creditDays?.name || cust?.creditDays} />
                                                                 <DetailItem label="GST Registered" value={cust?.isGSTRegistered || cust?.IsGSTRegistered ? 'YES' : 'NO'} />
@@ -653,7 +653,7 @@ const CustomerList = () => {
 
                                                             {/* Documents */}
                                                             <div className="md:col-span-4 mt-6">
-                                                                <h4 className="text-[11px] font-black text-erp-accent/80 uppercase tracking-widest border-b border-amber-100 pb-2 mb-6">Verification Documents</h4>
+                                                                <h4 className="text-[11px] font-black text-erp-accent/80 uppercase tracking-widest border-b border-erp-accent/10 pb-2 mb-6">Verification Documents</h4>
                                                                 <div className="flex flex-wrap gap-8">
                                                                     <DocumentChip label="GST Certificate" url={cust?.gstCertificateImg || cust?.GSTCertificateImg} />
                                                                     <DocumentChip label="Aadhar Card" url={cust?.aadharCardImg || cust?.AadharCardImg || cust?.aadharImage} />
@@ -689,7 +689,7 @@ const CustomerList = () => {
                         <button
                             disabled={pagination.currentPage === 1}
                             onClick={() => fetchCustomers(pagination.currentPage - 1)}
-                            className="p-2 rounded-full border border-gray-200 disabled:opacity-30 hover:bg-amber-50 transition-colors"
+                            className="p-2 rounded-full border border-gray-200 disabled:opacity-30 hover:bg-erp-accent/5 transition-colors"
                         >
                             <Icon icon="mdi:chevron-left" className="text-xl" />
                         </button>
@@ -697,7 +697,7 @@ const CustomerList = () => {
                         <button
                             disabled={pagination.currentPage === pagination.totalPages}
                             onClick={() => fetchCustomers(pagination.currentPage + 1)}
-                            className="p-2 rounded-full border border-gray-200 disabled:opacity-30 hover:bg-amber-50 transition-colors"
+                            className="p-2 rounded-full border border-gray-200 disabled:opacity-30 hover:bg-erp-accent/5 transition-colors"
                         >
                             <Icon icon="mdi:chevron-right" className="text-xl" />
                         </button>
@@ -759,7 +759,7 @@ const CustomerList = () => {
                                     <h3 className="text-erp-accent font-bold uppercase text-xs tracking-widest border-b pb-2">Registered Addresses</h3>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         {([selectedCustomer?.billToAddress, ...(selectedCustomer?.customerShipToDetails || selectedCustomer?.address || [])].filter(Boolean)).map((addr, idx) => (
-                                            <div key={idx} className="bg-amber-50/50 p-4 rounded-2xl border border-amber-100">
+                                            <div key={idx} className="bg-erp-accent/5/50 p-4 rounded-2xl border border-erp-accent/10">
                                                 <p className="font-bold text-gray-800 text-sm mb-2 italic">Address {idx + 1}</p>
                                                 <p className="text-xs text-gray-600 mb-1">{addr?.address || addr?.address1 || addr?.branchAddress}</p>
                                                 <p className="text-xs text-gray-600 mb-2">{addr?.city}, {addr?.state}, {addr?.country} - {addr?.zipCode}</p>
@@ -837,7 +837,7 @@ const DocumentChip = ({ label, url }) => (
     <div className="flex flex-col gap-2">
         <span className="text-[10px] uppercase font-bold text-gray-400">{label}</span>
         {url ? (
-            <a href={url} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-amber-50 text-erp-accent/80 px-4 py-2 rounded-xl border border-amber-100 hover:bg-amber-100 transition-colors">
+            <a href={url} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-erp-accent/5 text-erp-accent/80 px-4 py-2 rounded-xl border border-erp-accent/10 hover:bg-amber-100 transition-colors">
                 <Icon icon="mdi:file-document-outline" className="text-xl" />
                 <span className="text-xs font-bold uppercase">View Document</span>
             </a>
@@ -883,3 +883,5 @@ const FilterInput = ({ placeholder, value, onChange, icon }) => (
 );
 
 export default CustomerList;
+
+

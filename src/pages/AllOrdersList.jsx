@@ -232,7 +232,7 @@ const AllOrdersList = () => {
                             <Icon icon="mdi:magnify" className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400 text-lg group-hover:text-erp-accent transition-colors" />
                             <input
                                 placeholder="Order #65432..."
-                                className="w-full pl-14 pr-6 py-2.5 rounded-full bg-gray-50/80 border border-gray-100/50 text-[11px] font-black uppercase tracking-widest text-gray-700 focus:bg-white focus:ring-4 focus:ring-amber-50 focus:border-amber-100 transition-all outline-none placeholder:text-gray-300"
+                                className="w-full pl-14 pr-6 py-2.5 rounded-full bg-gray-50/80 border border-gray-100/50 text-[11px] font-black uppercase tracking-widest text-gray-700 focus:bg-white focus:ring-4 focus:ring-amber-50 focus:border-erp-accent/10 transition-all outline-none placeholder:text-gray-300"
                                 value={searchTerm}
                                 onChange={(e) => setSearchTerm(e.target.value)}
                             />
@@ -312,7 +312,7 @@ const AllOrdersList = () => {
                 <div className="flex items-end self-end w-full md:w-auto mb-1">
                     <button
                         onClick={handleResetFilters}
-                        className="flex items-center justify-center gap-2 text-gray-400 hover:text-erp-accent/80 px-5 py-2.5 rounded-full hover:bg-amber-50 transition-all duration-300 font-black text-[10px] uppercase tracking-widest group border border-transparent hover:border-amber-100 shadow-sm hover:shadow-md w-full md:w-auto"
+                        className="flex items-center justify-center gap-2 text-gray-400 hover:text-erp-accent/80 px-5 py-2.5 rounded-full hover:bg-erp-accent/5 transition-all duration-300 font-black text-[10px] uppercase tracking-widest group border border-transparent hover:border-erp-accent/10 shadow-sm hover:shadow-md w-full md:w-auto"
                     >
                         <Icon icon="mdi:refresh" className="text-lg group-hover:rotate-180 transition-transform duration-700" />
                         Clear Filters
@@ -344,7 +344,7 @@ const AllOrdersList = () => {
                                 {orders.map((order) => (
                                     <React.Fragment key={order._id}>
                                         <tr
-                                            className={`border-b border-gray-100 last:border-b-0 hover:bg-amber-50/20 transition-all h-16 cursor-pointer ${expandedRows.has(order._id) ? 'bg-amber-50/10' : ''}`}
+                                            className={`border-b border-gray-100 last:border-b-0 hover:bg-erp-accent/5/20 transition-all h-16 cursor-pointer ${expandedRows.has(order._id) ? 'bg-erp-accent/5/10' : ''}`}
                                             onClick={() => toggleRow(order._id)}
                                         >
                                             <td className="px-4 py-2 text-center border-r border-gray-50">
@@ -390,7 +390,7 @@ const AllOrdersList = () => {
                                                                 e.stopPropagation();
                                                                 navigate(PATHS.CUSTOMER_CARE.EDIT_ORDER.replace(':id', order._id));
                                                             }}
-                                                            className="p-1.5 bg-amber-50 text-erp-accent/80 rounded-lg hover:bg-erp-accent hover:text-white transition-all shadow-sm border border-amber-100"
+                                                            className="p-1.5 bg-erp-accent/5 text-erp-accent/80 rounded-lg hover:bg-erp-accent hover:text-white transition-all shadow-sm border border-erp-accent/10"
                                                             title="Edit Draft Order"
                                                         >
                                                             <Icon icon="mdi:pencil" className="text-sm" />
@@ -401,7 +401,7 @@ const AllOrdersList = () => {
                                             <td className="px-4 py-2 text-center relative" onClick={(e) => e.stopPropagation()}>
                                                 <button
                                                     onClick={() => setActiveActionMenu(activeActionMenu === order._id ? null : order._id)}
-                                                    className={`p-2 rounded-xl transition-all ${activeActionMenu === order._id ? 'bg-erp-accent text-white shadow-lg' : 'text-gray-400 hover:text-erp-accent hover:bg-amber-50'}`}
+                                                    className={`p-2 rounded-xl transition-all ${activeActionMenu === order._id ? 'bg-erp-accent text-white shadow-lg' : 'text-gray-400 hover:text-erp-accent hover:bg-erp-accent/5'}`}
                                                 >
                                                     <Icon icon="mdi:dots-vertical" className="w-6 h-6" />
                                                 </button>
@@ -418,7 +418,7 @@ const AllOrdersList = () => {
                                                                     toggleRow(order._id);
                                                                     setActiveActionMenu(null);
                                                                 }}
-                                                                className="w-full flex items-center gap-3 px-4 py-2 text-[11px] font-black uppercase text-gray-600 hover:bg-amber-50 hover:text-erp-accent/80 transition-colors"
+                                                                className="w-full flex items-center gap-3 px-4 py-2 text-[11px] font-black uppercase text-gray-600 hover:bg-erp-accent/5 hover:text-erp-accent/80 transition-colors"
                                                             >
                                                                 <Icon icon="mdi:eye-outline" className="text-base" />
                                                                 {expandedRows.has(order._id) ? 'Hide Items' : 'View Items'}
@@ -429,7 +429,7 @@ const AllOrdersList = () => {
                                                                     navigate(PATHS.CUSTOMER_CARE.ORDER_DETAILS.replace(':id', order._id));
                                                                     setActiveActionMenu(null);
                                                                 }}
-                                                                className="w-full flex items-center gap-3 px-4 py-2 text-[11px] font-black uppercase text-gray-600 hover:bg-amber-50 hover:text-erp-accent/80 transition-colors"
+                                                                className="w-full flex items-center gap-3 px-4 py-2 text-[11px] font-black uppercase text-gray-600 hover:bg-erp-accent/5 hover:text-erp-accent/80 transition-colors"
                                                             >
                                                                 <Icon icon="mdi:file-document-outline" className="text-base" />
                                                                 Full Details
@@ -441,7 +441,7 @@ const AllOrdersList = () => {
                                                                         navigate(PATHS.CUSTOMER_CARE.EDIT_ORDER.replace(':id', order._id));
                                                                         setActiveActionMenu(null);
                                                                     }}
-                                                                    className="w-full flex items-center gap-3 px-4 py-2 text-[11px] font-black uppercase text-erp-accent/80 hover:bg-amber-50 transition-colors"
+                                                                    className="w-full flex items-center gap-3 px-4 py-2 text-[11px] font-black uppercase text-erp-accent/80 hover:bg-erp-accent/5 transition-colors"
                                                                 >
                                                                     <Icon icon="mdi:pencil-outline" className="text-base" />
                                                                     Edit Order
@@ -607,7 +607,7 @@ const AllOrdersList = () => {
 
 const DetailSection = ({ title, children }) => (
     <div className="space-y-4">
-        <h4 className="text-[11px] font-black text-erp-accent/80 uppercase tracking-widest border-b border-amber-100 pb-2">{title}</h4>
+        <h4 className="text-[11px] font-black text-erp-accent/80 uppercase tracking-widest border-b border-erp-accent/10 pb-2">{title}</h4>
         <div className="space-y-3">{children}</div>
     </div>
 );
@@ -620,3 +620,5 @@ const DetailItem = ({ label, value }) => (
 );
 
 export default AllOrdersList;
+
+

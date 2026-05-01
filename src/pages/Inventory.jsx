@@ -34,8 +34,8 @@ const ModalHeader = ({ title, subtitle, onClose, icon: Icon }) => (
     <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 flex-shrink-0">
         <div className="flex items-center gap-3">
             {Icon && (
-                <div className="w-8 h-8 rounded-xl bg-orange-50 flex items-center justify-center">
-                    <Icon size={15} className="text-orange-500" />
+                <div className="w-8 h-8 rounded-xl bg-erp-accent/5 flex items-center justify-center">
+                    <Icon size={15} className="text-erp-accent" />
                 </div>
             )}
             <div>
@@ -57,7 +57,7 @@ const ModalFooter = ({ children }) => (
 
 const SectionTitle = ({ children }) => (
     <div className="flex items-center gap-2 mb-4">
-        <div className="w-0.5 h-4 bg-orange-400 rounded-full" />
+        <div className="w-0.5 h-4 bg-erp-accent/80 rounded-full" />
         <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">{children}</span>
     </div>
 );
@@ -69,7 +69,7 @@ const FieldInput = ({ label, children }) => (
     </div>
 );
 
-const inputCls = "w-full px-3 py-2 text-sm border border-gray-300 rounded-xl outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 hover:border-gray-400 bg-gray-50 text-gray-700 transition placeholder:text-gray-300";
+const inputCls = "w-full px-3 py-2 text-sm border border-gray-300 rounded-xl outline-none focus:border-erp-accent/30 focus:ring-2 focus:ring-erp-accent/10 hover:border-gray-400 bg-gray-50 text-gray-700 transition placeholder:text-gray-300";
 const selectCls = inputCls;
 
 const FETCH_LIMIT = 100;
@@ -87,7 +87,7 @@ function RowCheckbox({ checked, onChange, indeterminate = false }) {
             type="checkbox"
             checked={checked}
             onChange={onChange}
-            className="w-3.5 h-3.5 rounded accent-orange-500 cursor-pointer"
+            className="w-3.5 h-3.5 rounded accent-erp-accent cursor-pointer"
         />
     );
 }
@@ -144,7 +144,7 @@ function ProductKeywordInput({ value, onChange }) {
             <div className="relative">
                 <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300 pointer-events-none" size={12} />
                 {searching && (
-                    <div className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 border-2 border-orange-300 border-t-transparent rounded-full animate-spin pointer-events-none" />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 border-2 border-erp-accent/30 border-t-transparent rounded-full animate-spin pointer-events-none" />
                 )}
                 <input
                     type="text"
@@ -152,7 +152,7 @@ function ProductKeywordInput({ value, onChange }) {
                     onChange={handleChange}
                     onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
                     placeholder="Code, brand, category..."
-                    className="w-full pl-8 pr-8 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 bg-gray-50 text-gray-700 transition placeholder:text-gray-300"
+                    className="w-full pl-8 pr-8 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-erp-accent/30 focus:ring-2 focus:ring-erp-accent/10 bg-gray-50 text-gray-700 transition placeholder:text-gray-300"
                 />
                 {value && !searching && (
                     <button onClick={() => { onChange(""); setSuggestions([]); setShowSuggestions(false); }}
@@ -163,16 +163,16 @@ function ProductKeywordInput({ value, onChange }) {
             </div>
             {showSuggestions && suggestions.length > 0 && (
                 <div className="absolute top-full left-0 right-0 mt-1 z-50 bg-white border border-gray-200 rounded-xl shadow-xl overflow-hidden">
-                    <div className="px-3 py-2 bg-orange-50 border-b border-gray-100">
+                    <div className="px-3 py-2 bg-erp-accent/5 border-b border-gray-100">
                         <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Suggestions</p>
                     </div>
                     <ul className="max-h-52 overflow-y-auto">
                         {suggestions.map((s, i) => (
                             <li key={i}>
                                 <button onMouseDown={() => handleSelect(s)}
-                                    className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-orange-50 transition text-left">
-                                    <div className="w-7 h-7 rounded-full bg-orange-50 border border-orange-100 flex items-center justify-center flex-shrink-0">
-                                        <FiPackage size={11} className="text-orange-400" />
+                                    className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-erp-accent/5 transition text-left">
+                                    <div className="w-7 h-7 rounded-full bg-erp-accent/5 border border-orange-100 flex items-center justify-center flex-shrink-0">
+                                        <FiPackage size={11} className="text-erp-accent/80" />
                                     </div>
                                     <div className="min-w-0">
                                         <p className="text-sm font-semibold text-gray-800 truncate">
@@ -285,15 +285,15 @@ export default function Inventory() {
                 <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
                     <div className="flex items-center gap-3">
                         <button onClick={() => setShowAddProductModal(true)}
-                            className="flex items-center gap-1.5 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold rounded-xl transition shadow-sm">
+                            className="flex items-center gap-1.5 px-4 py-2 bg-erp-accent hover:bg-erp-accent/90 text-white text-xs font-semibold rounded-xl transition shadow-sm">
                             <FiPlus size={13} /> Add Product
                         </button>
                         <button onClick={() => setShowBulkUploadModal(true)}
-                            className="flex items-center gap-1.5 px-4 py-2 bg-white border border-orange-300 hover:bg-orange-50 text-orange-600 text-xs font-semibold rounded-xl transition shadow-sm">
+                            className="flex items-center gap-1.5 px-4 py-2 bg-white border border-erp-accent/30 hover:bg-erp-accent/5 text-erp-accent/90 text-xs font-semibold rounded-xl transition shadow-sm">
                             <FiUpload size={13} /> Bulk Upload
                         </button>
                         <button onClick={handleRefresh}
-                            className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 text-xs font-semibold rounded-lg transition shadow-sm w-fit">
+                            className="flex items-center gap-2 bg-erp-accent hover:bg-erp-accent/90 text-white px-4 py-2 text-xs font-semibold rounded-lg transition shadow-sm w-fit">
                             <FiRefreshCw size={13} /> Refresh
                         </button>
                     </div>
@@ -305,7 +305,7 @@ export default function Inventory() {
                                 <div className="relative">
                                     <FiCalendar className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300" size={12} />
                                     <input type="date" value={fromDate} onChange={e => setFromDate(e.target.value)}
-                                        className="w-full pl-8 pr-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 bg-gray-50 text-gray-700 transition" />
+                                        className="w-full pl-8 pr-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-erp-accent/30 focus:ring-2 focus:ring-erp-accent/10 bg-gray-50 text-gray-700 transition" />
                                 </div>
                             </div>
                             <div className="flex flex-col flex-1 sm:w-40">
@@ -313,14 +313,14 @@ export default function Inventory() {
                                 <div className="relative">
                                     <FiCalendar className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300" size={12} />
                                     <input type="date" value={toDate} onChange={e => setToDate(e.target.value)}
-                                        className="w-full pl-8 pr-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 bg-gray-50 text-gray-700 transition" />
+                                        className="w-full pl-8 pr-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-erp-accent/30 focus:ring-2 focus:ring-erp-accent/10 bg-gray-50 text-gray-700 transition" />
                                 </div>
                             </div>
                         </div>
                         <ProductKeywordInput value={keyword} onChange={setKeyword} />
                         <div className="flex gap-2 flex-shrink-0">
                             <button onClick={() => setTriggerSearch(prev => prev + 1)}
-                                className="px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold rounded-xl transition shadow-sm">
+                                className="px-4 py-2 bg-erp-accent hover:bg-erp-accent/90 text-white text-xs font-semibold rounded-xl transition shadow-sm">
                                 Search
                             </button>
                         </div>
@@ -345,7 +345,7 @@ export default function Inventory() {
                             {rows.map((row, i) => (
                                 <div key={row.id} className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
                                     <div className="flex items-center justify-between mb-3">
-                                        <span className="text-[10px] font-bold text-orange-500 uppercase tracking-widest">Product #{i + 1}</span>
+                                        <span className="text-[10px] font-bold text-erp-accent uppercase tracking-widest">Product #{i + 1}</span>
                                         {rows.length > 1 && (
                                             <button type="button" onClick={() => removeRow(row.id)}
                                                 className="p-1.5 rounded-lg hover:bg-red-50 text-red-400 transition">
@@ -430,7 +430,7 @@ export default function Inventory() {
                                 </div>
                             ))}
                             <button type="button" onClick={addRow}
-                                className="w-full py-3 border-2 border-dashed border-orange-200 hover:border-orange-400 text-orange-400 hover:text-orange-600 text-xs font-semibold rounded-2xl transition flex items-center justify-center gap-2">
+                                className="w-full py-3 border-2 border-dashed border-erp-accent/20 hover:border-erp-accent/40 text-erp-accent/80 hover:text-erp-accent/90 text-xs font-semibold rounded-2xl transition flex items-center justify-center gap-2">
                                 <FiPlus size={14} /> Add Another Product
                             </button>
                         </div>
@@ -440,7 +440,7 @@ export default function Inventory() {
                                 Cancel
                             </button>
                             <button type="submit"
-                                className="px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold rounded-xl transition shadow-sm">
+                                className="px-5 py-2 bg-erp-accent hover:bg-erp-accent/90 text-white text-xs font-semibold rounded-xl transition shadow-sm">
                                 Submit Products
                             </button>
                         </ModalFooter>
@@ -715,7 +715,7 @@ function InventoryTable({ fromDate, setFromDate, toDate, setToDate, keyword, set
                             <BsUpcScan size={14} />
                         </button>
                         <button onClick={e => { e.stopPropagation(); setOpenInventoryHistoryTableModal(true); setSelectedProduct(product); }}
-                            className="p-1.5 rounded-lg hover:bg-orange-50 text-orange-400 transition" title="Inventory History">
+                            className="p-1.5 rounded-lg hover:bg-erp-accent/5 text-erp-accent/80 transition" title="Inventory History">
                             <FiInfo size={14} />
                         </button>
                     </div>
@@ -798,7 +798,7 @@ function InventoryTable({ fromDate, setFromDate, toDate, setToDate, keyword, set
         return (
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm flex items-center justify-center py-20">
                 <div className="flex flex-col items-center gap-3">
-                    <div className="w-8 h-8 border-2 border-orange-300 border-t-transparent rounded-full animate-spin" />
+                    <div className="w-8 h-8 border-2 border-erp-accent/30 border-t-transparent rounded-full animate-spin" />
                     <span className="text-sm text-gray-400">Loading inventory...</span>
                 </div>
             </div>
@@ -815,8 +815,8 @@ function InventoryTable({ fromDate, setFromDate, toDate, setToDate, keyword, set
                 {selectedCount > 0 ? (
                     <div className="flex items-center gap-3 flex-wrap">
                         {/* Selection summary badge */}
-                        <div className="flex items-center gap-2 bg-orange-50 border border-orange-200 rounded-xl px-3 py-1.5">
-                            <FiCheckSquare size={13} className="text-orange-500" />
+                        <div className="flex items-center gap-2 bg-erp-accent/5 border border-erp-accent/20 rounded-xl px-3 py-1.5">
+                            <FiCheckSquare size={13} className="text-erp-accent" />
                             <span className="text-xs font-bold text-orange-700">
                                 {selectedCount} row{selectedCount > 1 ? "s" : ""} selected
                             </span>
@@ -848,7 +848,7 @@ function InventoryTable({ fromDate, setFromDate, toDate, setToDate, keyword, set
                     <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-300" size={13} />
                     <input type="text" value={globalFilter ?? ""} onChange={e => setGlobalFilter(e.target.value)}
                         placeholder="Quick search..."
-                        className="w-full pl-8 pr-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 transition text-gray-600 placeholder:text-gray-300" />
+                        className="w-full pl-8 pr-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-erp-accent/30 focus:ring-2 focus:ring-erp-accent/10 transition text-gray-600 placeholder:text-gray-300" />
                 </div>
             </div>
 
@@ -875,7 +875,7 @@ function InventoryTable({ fromDate, setFromDate, toDate, setToDate, keyword, set
                             return (
                                 <tr key={row.id}
                                     className={`border-b border-gray-50 text-center transition-colors cursor-pointer
-                                        ${isChecked ? "bg-orange-50/70 hover:bg-orange-50" : "hover:bg-orange-50"}`}
+                                        ${isChecked ? "bg-erp-accent/5/70 hover:bg-erp-accent/5" : "hover:bg-erp-accent/5"}`}
                                     onClick={() => toggleRow(row.original)}
                                 >
                                     {row.getVisibleCells().map(cell => (
@@ -905,7 +905,7 @@ function InventoryTable({ fromDate, setFromDate, toDate, setToDate, keyword, set
                         ${loadingMore || (!isSearching && !hasMore)
                             ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                             : isSearching ? "bg-gray-200 hover:bg-gray-300 text-gray-700"
-                                : "bg-orange-500 hover:bg-orange-600 text-white"}`}>
+                                : "bg-erp-accent hover:bg-erp-accent/90 text-white"}`}>
                     {loadingMore ? "Loading..." : isSearching ? "Reset Search" : "Load More"}
                 </button>
                 <div className="flex items-center gap-1">
@@ -916,7 +916,7 @@ function InventoryTable({ fromDate, setFromDate, toDate, setToDate, keyword, set
                     {startPage > 0 && (<><button onClick={() => table.setPageIndex(0)} className="w-8 h-8 text-xs rounded-lg border border-gray-200 text-gray-600 hover:bg-gray-50 font-semibold">1</button><span className="text-gray-300 text-xs">…</span></>)}
                     {pages.map(p => (
                         <button key={p} onClick={() => table.setPageIndex(p)}
-                            className={`w-8 h-8 text-xs rounded-lg font-semibold transition ${p === currentPage ? "bg-orange-500 text-white shadow-sm" : "border border-gray-200 text-gray-600 hover:bg-gray-50"}`}>
+                            className={`w-8 h-8 text-xs rounded-lg font-semibold transition ${p === currentPage ? "bg-erp-accent text-white shadow-sm" : "border border-gray-200 text-gray-600 hover:bg-gray-50"}`}>
                             {p + 1}
                         </button>
                     ))}
@@ -1082,7 +1082,7 @@ function EditProductModal({ product, settings, onClose }) {
                     <button type="button" onClick={onClose}
                         className="px-4 py-2 text-xs font-semibold text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition">Cancel</button>
                     <button type="submit" disabled={saving}
-                        className="flex items-center gap-2 px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold rounded-xl transition shadow-sm disabled:opacity-60">
+                        className="flex items-center gap-2 px-5 py-2 bg-erp-accent hover:bg-erp-accent/90 text-white text-xs font-semibold rounded-xl transition shadow-sm disabled:opacity-60">
                         {saving && <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />}
                         {saving ? "Saving..." : "Save Changes"}
                     </button>
@@ -1116,7 +1116,7 @@ const InventoryModal = ({ open, onClose, inventoryRows, updateRow, addRow, remov
                     {inventoryRows.map((row, index) => (
                         <div key={index} className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
                             <div className="flex items-center justify-between mb-3">
-                                <span className="text-[10px] font-bold text-orange-500 uppercase tracking-widest">
+                                <span className="text-[10px] font-bold text-erp-accent uppercase tracking-widest">
                                     Row #{index + 1}
                                     {bulkProducts?.[index]?.productCode && (
                                         <span className="ml-2 font-mono text-gray-400 normal-case font-normal">
@@ -1153,7 +1153,7 @@ const InventoryModal = ({ open, onClose, inventoryRows, updateRow, addRow, remov
                                     </select>
                                 </FieldInput>
                                 <FieldInput label="Total">
-                                    <input type="number" value={row.total} readOnly className={`${inputCls} bg-orange-50 text-emerald-600 font-semibold`} />
+                                    <input type="number" value={row.total} readOnly className={`${inputCls} bg-erp-accent/5 text-emerald-600 font-semibold`} />
                                 </FieldInput>
                                 <FieldInput label="MRP">
                                     <input type="number" value={row.mrp} onChange={e => updateRow(index, "mrp", e.target.value)}
@@ -1175,7 +1175,7 @@ const InventoryModal = ({ open, onClose, inventoryRows, updateRow, addRow, remov
                     ))}
 
                     <button type="button" onClick={addRow}
-                        className="w-full py-3 border-2 border-dashed border-orange-200 hover:border-orange-400 text-orange-400 hover:text-orange-600 text-xs font-semibold rounded-2xl transition flex items-center justify-center gap-2">
+                        className="w-full py-3 border-2 border-dashed border-erp-accent/20 hover:border-erp-accent/40 text-erp-accent/80 hover:text-erp-accent/90 text-xs font-semibold rounded-2xl transition flex items-center justify-center gap-2">
                         <FiPlus size={14} /> Add Row
                     </button>
                 </div>
@@ -1184,7 +1184,7 @@ const InventoryModal = ({ open, onClose, inventoryRows, updateRow, addRow, remov
                     <button type="button" onClick={onClose}
                         className="px-4 py-2 text-xs font-semibold text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition">Cancel</button>
                     <button type="submit"
-                        className="px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold rounded-xl transition shadow-sm">Submit</button>
+                        className="px-5 py-2 bg-erp-accent hover:bg-erp-accent/90 text-white text-xs font-semibold rounded-xl transition shadow-sm">Submit</button>
                 </ModalFooter>
             </form>
         </Modal>
@@ -1229,7 +1229,7 @@ const InventoryHistoryModal = ({ product, onClose }) => {
             <div className="flex-1 min-h-0 overflow-y-auto p-6">
                 {loading ? (
                     <div className="flex items-center justify-center py-12">
-                        <div className="w-6 h-6 border-2 border-orange-300 border-t-transparent rounded-full animate-spin" />
+                        <div className="w-6 h-6 border-2 border-erp-accent/30 border-t-transparent rounded-full animate-spin" />
                     </div>
                 ) : (
                     <div className="overflow-x-auto rounded-xl border border-gray-100">
@@ -1238,7 +1238,7 @@ const InventoryHistoryModal = ({ product, onClose }) => {
                                 {table.getHeaderGroups().map(hg => (
                                     <tr key={hg.id} className="border-b border-gray-100">
                                         {hg.headers.map(h => (
-                                            <th key={h.id} className="px-4 py-3 text-center text-xs font-semibold text-white bg-orange-500 whitespace-nowrap uppercase tracking-wider">
+                                            <th key={h.id} className="px-4 py-3 text-center text-xs font-semibold text-white bg-erp-accent whitespace-nowrap uppercase tracking-wider">
                                                 {h.column.columnDef.header}
                                             </th>
                                         ))}
@@ -1250,7 +1250,7 @@ const InventoryHistoryModal = ({ product, onClose }) => {
                                     <tr><td colSpan={columns.length} className="py-10 text-center text-gray-400">No inventory data found</td></tr>
                                 )}
                                 {table.getRowModel().rows.map(row => (
-                                    <tr key={row.id} className="border-b border-gray-50 hover:bg-orange-50 transition-colors">
+                                    <tr key={row.id} className="border-b border-gray-50 hover:bg-erp-accent/5 transition-colors">
                                         {row.getVisibleCells().map(cell => (
                                             <td key={cell.id} className="px-4 py-2.5 text-gray-700 text-center whitespace-nowrap">
                                                 {cell.renderValue()}
@@ -1319,7 +1319,7 @@ function PreviewLabel({ value, productCode, printType = "barcode" }) {
 // ─── QtyStepper ───────────────────────────────────────────────────────────────
 function QtyStepper({ value, onChange }) {
     return (
-        <div className="flex items-center border border-gray-300 rounded-xl overflow-hidden bg-gray-50 focus-within:border-orange-300 focus-within:ring-2 focus-within:ring-orange-100 transition">
+        <div className="flex items-center border border-gray-300 rounded-xl overflow-hidden bg-gray-50 focus-within:border-erp-accent/30 focus-within:ring-2 focus-within:ring-orange-100 transition">
             <button type="button" onClick={() => onChange((parseInt(value) || 0) - 1)}
                 className="px-3 py-2 text-gray-500 hover:bg-gray-100 transition text-base font-semibold flex-shrink-0 select-none">−</button>
             <input
@@ -1714,7 +1714,7 @@ ${labelsHtml}
     const StatusBadge = ({ status }) => {
         if (status === "loading") return <span className="flex items-center gap-1 text-[10px] text-blue-400"><span className="w-2.5 h-2.5 border-2 border-blue-300 border-t-transparent rounded-full animate-spin" />Looking up...</span>;
         if (status === "found") return <span className="text-[10px] text-emerald-500 font-semibold">✓ Found</span>;
-        if (status === "notfound") return <span className="text-[10px] text-amber-500">Not in inventory</span>;
+        if (status === "notfound") return <span className="text-[10px] text-erp-accent">Not in inventory</span>;
         if (status === "error") return <span className="text-[10px] text-red-400">Lookup failed</span>;
         return null;
     };
@@ -1764,8 +1764,8 @@ ${labelsHtml}
                 </div>
 
                 {/* Info bar */}
-                <div className="flex items-center gap-2 bg-orange-50 border border-orange-100 rounded-xl px-4 py-2.5">
-                    <FiTag size={13} className="text-orange-400 flex-shrink-0" />
+                <div className="flex items-center gap-2 bg-erp-accent/5 border border-orange-100 rounded-xl px-4 py-2.5">
+                    <FiTag size={13} className="text-erp-accent/80 flex-shrink-0" />
                     <p className="text-xs text-orange-700">
                         <strong>100 × 13mm</strong> — thermal label, one label per cut.
                         {validRows.length > 0 && (
@@ -1786,7 +1786,7 @@ ${labelsHtml}
                             <div key={row.id} className="bg-gray-50 rounded-2xl border border-gray-100 p-4">
                                 <div className="flex items-center justify-between mb-3">
                                     <div className="flex items-center gap-2 flex-wrap">
-                                        <span className="text-[10px] font-bold text-orange-500 uppercase tracking-widest">Label #{idx + 1}</span>
+                                        <span className="text-[10px] font-bold text-erp-accent uppercase tracking-widest">Label #{idx + 1}</span>
                                         <StatusBadge status={row._status} />
                                     </div>
                                     {rows.length > 1 && (
@@ -1831,7 +1831,7 @@ ${labelsHtml}
                                             <label className="flex items-center gap-1 cursor-pointer">
                                                 <input type="checkbox" checked={row.showMrp}
                                                     onChange={e => updateRow(row.id, "showMrp", e.target.checked)}
-                                                    className="accent-orange-500 w-3 h-3" />
+                                                    className="accent-erp-accent w-3 h-3" />
                                                 <span className="text-[9px] text-gray-400 select-none">Show</span>
                                             </label>
                                         </div>
@@ -1869,20 +1869,20 @@ ${labelsHtml}
                 </div>
 
                 <button type="button" onClick={addRow}
-                    className="w-full py-3 border-2 border-dashed border-orange-200 hover:border-orange-400 text-orange-400 hover:text-orange-600 text-xs font-semibold rounded-2xl transition flex items-center justify-center gap-2">
+                    className="w-full py-3 border-2 border-dashed border-erp-accent/20 hover:border-erp-accent/40 text-erp-accent/80 hover:text-erp-accent/90 text-xs font-semibold rounded-2xl transition flex items-center justify-center gap-2">
                     <FiPlus size={14} /> Add Another Code
                 </button>
             </div>
 
             <ModalFooter>
                 <div className="flex items-center gap-2 text-xs text-gray-400 mr-auto">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 inline-block flex-shrink-0" />
+                    <span className="w-2 h-2 rounded-full bg-erp-accent/80 inline-block flex-shrink-0" />
                     {validRows.length} code{validRows.length !== 1 ? "s" : ""} · {totalLabels} total label{totalLabels !== 1 ? "s" : ""}
                 </div>
                 <button type="button" onClick={onClose}
                     className="px-4 py-2 text-xs font-semibold text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition">Cancel</button>
                 <button type="button" onClick={handlePrint} disabled={validRows.length === 0}
-                    className="flex items-center gap-2 px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold rounded-xl transition shadow-sm disabled:opacity-50 disabled:cursor-not-allowed">
+                    className="flex items-center gap-2 px-5 py-2 bg-erp-accent hover:bg-erp-accent/90 text-white text-xs font-semibold rounded-xl transition shadow-sm disabled:opacity-50 disabled:cursor-not-allowed">
                     <FiPrinter size={13} />
                     Print {printType === "qr" ? "QR" : "Barcode"} Labels
                 </button>
@@ -2028,13 +2028,13 @@ function BulkUploadModal({ onClose }) {
 
                 {step === "upload" && (
                     <div className="space-y-5">
-                        <div className="flex items-center justify-between bg-orange-50 border border-orange-100 rounded-2xl px-5 py-4 gap-4">
+                        <div className="flex items-center justify-between bg-erp-accent/5 border border-orange-100 rounded-2xl px-5 py-4 gap-4">
                             <div>
                                 <p className="text-sm font-semibold text-gray-800">Step 1 — Download the template</p>
-                                <p className="text-xs text-gray-500 mt-0.5">Leave <span className="font-mono font-semibold text-orange-600">productCode</span> blank to auto-generate.</p>
+                                <p className="text-xs text-gray-500 mt-0.5">Leave <span className="font-mono font-semibold text-erp-accent/90">productCode</span> blank to auto-generate.</p>
                             </div>
                             <button onClick={downloadTemplate}
-                                className="flex items-center gap-2 px-4 py-2 bg-white border border-orange-300 text-orange-600 text-xs font-semibold rounded-xl hover:bg-orange-50 transition shadow-sm flex-shrink-0">
+                                className="flex items-center gap-2 px-4 py-2 bg-white border border-erp-accent/30 text-erp-accent/90 text-xs font-semibold rounded-xl hover:bg-erp-accent/5 transition shadow-sm flex-shrink-0">
                                 <FiDownload size={13} /> Download Template
                             </button>
                         </div>
@@ -2042,7 +2042,7 @@ function BulkUploadModal({ onClose }) {
                         <div className="bg-gray-50 border border-gray-100 rounded-2xl px-5 py-4">
                             <p className="text-sm font-semibold text-gray-800 mb-1">Step 2 — Set auto-code prefix</p>
                             <p className="text-xs text-gray-500 mb-3">
-                                Blank productCode rows get a code like <span className="font-mono font-semibold text-orange-600">1{activePrefix}, 2{activePrefix}…</span>
+                                Blank productCode rows get a code like <span className="font-mono font-semibold text-erp-accent/90">1{activePrefix}, 2{activePrefix}…</span>
                             </p>
                             <div className="flex items-center gap-3">
                                 <div className="relative w-44">
@@ -2050,7 +2050,7 @@ function BulkUploadModal({ onClose }) {
                                     <input type="text" value={prefix}
                                         onChange={e => setPrefix(e.target.value.toUpperCase().replace(/\s/g, "").slice(0, 6))}
                                         placeholder="DO" maxLength={6}
-                                        className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-orange-300 focus:ring-2 focus:ring-orange-100 bg-white text-gray-800 transition font-mono uppercase tracking-widest" />
+                                        className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-xl outline-none focus:border-erp-accent/30 focus:ring-2 focus:ring-erp-accent/10 bg-white text-gray-800 transition font-mono uppercase tracking-widest" />
                                 </div>
                                 <span className="text-xs text-gray-400">Leave blank to default to <span className="font-mono font-semibold">DO</span></span>
                             </div>
@@ -2060,13 +2060,13 @@ function BulkUploadModal({ onClose }) {
                             <p className="text-sm font-semibold text-gray-800 mb-2">Step 3 — Upload filled Excel file</p>
                             <div ref={dropRef} onDrop={onDrop} onDragOver={e => e.preventDefault()}
                                 onClick={() => document.getElementById("bulk-file-input").click()}
-                                className="border-2 border-dashed border-orange-200 hover:border-orange-400 rounded-2xl p-10 flex flex-col items-center justify-center gap-3 cursor-pointer transition bg-gray-50 hover:bg-orange-50">
+                                className="border-2 border-dashed border-erp-accent/20 hover:border-erp-accent/40 rounded-2xl p-10 flex flex-col items-center justify-center gap-3 cursor-pointer transition bg-gray-50 hover:bg-erp-accent/5">
                                 <div className="w-12 h-12 rounded-2xl bg-orange-100 flex items-center justify-center">
-                                    <FiUpload size={20} className="text-orange-500" />
+                                    <FiUpload size={20} className="text-erp-accent" />
                                 </div>
                                 {parsing ? (
                                     <div className="flex flex-col items-center gap-2">
-                                        <div className="w-5 h-5 border-2 border-orange-300 border-t-transparent rounded-full animate-spin" />
+                                        <div className="w-5 h-5 border-2 border-erp-accent/30 border-t-transparent rounded-full animate-spin" />
                                         <span className="text-sm text-gray-500">Parsing file...</span>
                                     </div>
                                 ) : (
@@ -2182,7 +2182,7 @@ function BulkUploadModal({ onClose }) {
                                     <p className="text-lg font-bold text-gray-800">Upload Failed</p>
                                     <p className="text-sm text-gray-500 mt-1">{result.message}</p>
                                     {result.existingCodes?.length > 0 && (
-                                        <div className="mt-3 bg-amber-50 border border-amber-100 rounded-xl px-4 py-3 text-left">
+                                        <div className="mt-3 bg-erp-accent/5 border border-erp-accent/10 rounded-xl px-4 py-3 text-left">
                                             <p className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-1.5">Already exist in inventory</p>
                                             <div className="flex flex-wrap gap-1.5">
                                                 {result.existingCodes.map(code => <span key={code} className="text-xs font-mono bg-amber-100 text-amber-800 px-2 py-0.5 rounded-lg">{code}</span>)}
@@ -2191,7 +2191,7 @@ function BulkUploadModal({ onClose }) {
                                     )}
                                 </div>
                                 <button onClick={() => { setStep("preview"); setResult(null); }}
-                                    className="px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold rounded-xl transition">← Back to Preview</button>
+                                    className="px-5 py-2 bg-erp-accent hover:bg-erp-accent/90 text-white text-xs font-semibold rounded-xl transition">← Back to Preview</button>
                             </>
                         )}
                     </div>
@@ -2205,7 +2205,7 @@ function BulkUploadModal({ onClose }) {
                 </button>
                 {step === "preview" && validationErrors.length === 0 && (
                     <button onClick={handleSubmit} disabled={submitting}
-                        className="flex items-center gap-2 px-5 py-2 bg-orange-500 hover:bg-orange-600 text-white text-xs font-semibold rounded-xl transition shadow-sm disabled:opacity-60">
+                        className="flex items-center gap-2 px-5 py-2 bg-erp-accent hover:bg-erp-accent/90 text-white text-xs font-semibold rounded-xl transition shadow-sm disabled:opacity-60">
                         {submitting && <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />}
                         {submitting ? "Uploading..." : `Upload ${rows.length} Products`}
                     </button>
@@ -2214,6 +2214,8 @@ function BulkUploadModal({ onClose }) {
         </Modal>
     );
 }
+
+
 
 
 

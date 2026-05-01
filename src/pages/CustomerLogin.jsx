@@ -107,7 +107,7 @@ const CustomerLogin = () => {
                                 maxWidth: '80%'
                             }}
                         >
-                            <Typography variant="h6" fontWeight={800} color="accent.main">
+                            <Typography variant="h6" fontWeight={800} color="primary.main">
                                 Welcome!
                             </Typography>
                             <Typography variant="body2" fontWeight={600} color="text.secondary">
@@ -138,10 +138,8 @@ const CustomerLogin = () => {
                         }}
                     >
                         <Box sx={{ mb: 6, textAlign: 'center' }}>
-                            <img src={logo} alt="Logo" style={{ height: '50px', marginBottom: '24px' }} />
-                            <Typography variant="h4" fontWeight={900} color="primary.main" gutterBottom>
-                                Customer Login
-                            </Typography>
+                            <img src={logo} alt="Logo" style={{ height: '50px', marginBottom: '24px' }} className='mx-auto' />
+
                         </Box>
 
                         <Stack component="form" onSubmit={formik.handleSubmit} spacing={3}>
@@ -172,7 +170,7 @@ const CustomerLogin = () => {
                                     component={Link}
                                     to={PATHS.CUSTOMER_FORGOT_PASSWORD}
                                     variant="caption"
-                                    sx={{ color: 'accent.main', textDecoration: 'none', fontWeight: 800 }}
+                                    sx={{ color: 'primary.main', textDecoration: 'none', fontWeight: 800 }}
                                 >
                                     Forgot Password?
                                 </Typography>
@@ -196,3 +194,5 @@ const CustomerLogin = () => {
 };
 
 export default CustomerLogin;
+
+

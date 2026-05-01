@@ -80,7 +80,7 @@ const CorrectionRequestModal = ({ isOpen, onClose, onSubmit, customerName, loadi
                 <div className="p-8 pb-4 flex items-center justify-between border-b border-gray-50">
                     <div>
                         <h2 className="text-2xl font-black text-gray-800 uppercase tracking-tight">Send for Correction</h2>
-                        <p className="text-gray-500 font-medium text-sm mt-1">Reviewing: <span className="text-amber-600 font-bold">{customerName}</span></p>
+                        <p className="text-gray-500 font-medium text-sm mt-1">Reviewing: <span className="text-erp-accent font-bold">{customerName}</span></p>
                     </div>
                     <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-full transition-colors">
                         <Icon icon="mdi:close" className="text-2xl text-gray-400" />
@@ -89,7 +89,7 @@ const CorrectionRequestModal = ({ isOpen, onClose, onSubmit, customerName, loadi
 
                 {/* Content */}
                 <div className="p-8 flex-1 custom-scrollbar">
-                    <div className="mb-8 p-4 bg-amber-50 rounded-2xl border border-amber-100">
+                    <div className="mb-8 p-4 bg-erp-accent/5 rounded-2xl border border-erp-accent/10">
                         <h3 className="text-xs font-black text-amber-800 uppercase tracking-[0.1em] mb-3">Fields Marked for Correction:</h3>
                         <div className="flex flex-wrap gap-2">
                             {initialFields.map((fieldId) => {
@@ -136,7 +136,7 @@ const CorrectionRequestModal = ({ isOpen, onClose, onSubmit, customerName, loadi
                                 <button
                                     type="button"
                                     onClick={() => setTargetRole('Finance')}
-                                    className={`px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${targetRole === 'Finance' ? 'bg-white text-amber-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
+                                    className={`px-6 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${targetRole === 'Finance' ? 'bg-white text-erp-accent shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
                                 >
                                     Finance Team
                                 </button>
@@ -168,7 +168,7 @@ const CorrectionRequestModal = ({ isOpen, onClose, onSubmit, customerName, loadi
                     <button
                         onClick={handleSubmit}
                         disabled={loading || !remark.trim()}
-                        className={`w-full py-3.5 px-6 font-bold rounded-2xl text-white transition-all focus:outline-none flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 shadow-lg shadow-amber-500/30 disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed`}
+                        className={`w-full py-3.5 px-6 font-bold rounded-2xl text-white transition-all focus:outline-none flex items-center justify-center gap-2 bg-erp-accent/50 hover:bg-amber-600 shadow-lg shadow-amber-500/30 disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed`}
                     >
                         {loading && <Icon icon="mdi:loading" className="animate-spin text-xl" />}
                         Send Request
@@ -180,3 +180,5 @@ const CorrectionRequestModal = ({ isOpen, onClose, onSubmit, customerName, loadi
 };
 
 export default CorrectionRequestModal;
+
+

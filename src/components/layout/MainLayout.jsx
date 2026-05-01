@@ -3,11 +3,11 @@ import Sidebar from './Sidebar';
 import Topbar from './Topbar';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Icon } from '@iconify/react';
-import { 
-    Box, 
-    Container, 
-    Fab, 
-    useTheme, 
+import {
+    Box,
+    Container,
+    Fab,
+    useTheme,
     useMediaQuery,
     Paper,
     Fade,
@@ -18,50 +18,37 @@ import GoBackButton from '../navigation/GoBackButton';
 const MainLayout = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-    const [isSidebarOpen, setIsSidebarOpen] = useState(!isMobile); 
+    const [isSidebarOpen, setIsSidebarOpen] = useState(!isMobile);
     const navigate = useNavigate();
-    
+
     const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
-    // Auto-close sidebar on mobile when navigating
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.innerWidth < 900) {
-                setIsSidebarOpen(false);
-            } else {
-                setIsSidebarOpen(true);
-            }
-        };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
     return (
-        <Box sx={{ display: 'flex', minHeight: '100vh', bgcolor: '#F8FAFC', position: 'relative', overflow: 'hidden' }}>
+        <Box sx={{ display: 'flex', minHeight: '100vh', minWidth: '100vw', bgcolor: '#F8FAFC', position: 'relative', overflow: 'hidden' }}>
             {/* Decorative Background Elements */}
-            <Box 
-                sx={{ 
-                    position: 'absolute', 
-                    top: -100, 
-                    right: -100, 
-                    width: 400, 
-                    height: 400, 
-                    borderRadius: '50%', 
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: -100,
+                    right: -100,
+                    width: 400,
+                    height: 400,
+                    borderRadius: '50%',
                     background: 'radial-gradient(circle, rgba(255, 99, 0, 0.05) 0%, transparent 70%)',
-                    zIndex: 0 
-                }} 
+                    zIndex: 0
+                }}
             />
-            <Box 
-                sx={{ 
-                    position: 'absolute', 
-                    bottom: -50, 
-                    left: -50, 
-                    width: 300, 
-                    height: 300, 
-                    borderRadius: '50%', 
+            <Box
+                sx={{
+                    position: 'absolute',
+                    bottom: -50,
+                    left: -50,
+                    width: 300,
+                    height: 300,
+                    borderRadius: '50%',
                     background: 'radial-gradient(circle, rgba(0, 0, 0, 0.03) 0%, transparent 70%)',
-                    zIndex: 0 
-                }} 
+                    zIndex: 0
+                }}
             />
 
             {/* Sidebar */}
@@ -79,7 +66,6 @@ const MainLayout = () => {
                         easing: theme.transitions.easing.sharp,
                         duration: theme.transitions.duration.leavingScreen,
                     }),
-                    ml: isSidebarOpen && !isMobile ? 0 : 0, 
                     width: '100%',
                     position: 'relative',
                     zIndex: 1,
@@ -88,11 +74,11 @@ const MainLayout = () => {
                     overflowX: 'hidden'
                 }}
             >
-                <Container maxWidth="xl" disableGutters sx={{ display: 'flex', flexDirection: 'column', gap: 3, height: '100%' }}>
+                <Container maxWidth={false} sx={{ display: 'flex', flexDirection: 'column', gap: 3, height: '100%', px: { xs: 0, md: 1 } }}>
                     {/* Topbar Integration */}
                     <Fade in timeout={800}>
                         <Box sx={{ mb: 1 }}>
-                            <Topbar />
+                            <Topbar onMenuClick={toggleSidebar} />
                         </Box>
                     </Fade>
 
@@ -149,13 +135,13 @@ const MainLayout = () => {
                         position: 'fixed',
                         bottom: { xs: 20, md: 40 },
                         right: { xs: 20, md: 40 },
-                        bgcolor: 'accent.main',
+                        bgcolor: 'primary.main',
                         '&:hover': {
                             bgcolor: 'accent.dark',
                             transform: 'scale(1.1)',
                         },
                         transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                        boxShadow: '0 8px 32px rgba(255, 99, 0, 0.4)',
+                        boxShadow: '0 8px 32px rgba(0, 140, 255, 0.4)',
                         zIndex: 1000
                     }}
                 >

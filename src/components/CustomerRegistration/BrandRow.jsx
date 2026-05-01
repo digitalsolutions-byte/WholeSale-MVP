@@ -31,3 +31,5 @@ export const BrandRow = ({ index, bc, remove, configs, formik, wrapInput, isRead
         </div>
     );
 };
+
+

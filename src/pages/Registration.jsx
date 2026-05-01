@@ -716,19 +716,19 @@ const Registration = () => {
 
                         {showDocumentFields && (
                             <div className="flex flex-col gap-4 col-span-1 md:col-span-2 mt-4">
-                                <label className="text-orange-500 font-bold uppercase text-lg text-center">Upload Aadhar Card & PAN Card</label>
+                                <label className="text-erp-accent font-bold uppercase text-lg text-center">Upload Aadhar Card & PAN Card</label>
                                 <div className="flex gap-12 justify-center mt-2">
                                     {/* Aadhar Upload */}
                                     <div className="flex flex-col items-center gap-2">
                                         <input type="file" hidden ref={aadharInputRef} onChange={(e) => handleFileSelect(e, 'aadhar')} accept="image/*" />
                                         <div
                                             onClick={() => aadharInputRef.current.click()}
-                                            className={`w-40 h-28 border-2 border-dashed rounded-2xl flex items-center justify-center overflow-hidden cursor-pointer transition-all shadow-sm ${formik.touched.aadharCard && formik.errors.aadharCard ? 'border-red-500 bg-red-50' : 'border-orange-300 hover:bg-orange-50'}`}
+                                            className={`w-40 h-28 border-2 border-dashed rounded-2xl flex items-center justify-center overflow-hidden cursor-pointer transition-all shadow-sm ${formik.touched.aadharCard && formik.errors.aadharCard ? 'border-red-500 bg-red-50' : 'border-erp-accent/30 hover:bg-erp-accent/5'}`}
                                         >
                                             {images.aadhar.preview ? (
                                                 <img src={images.aadhar.preview} alt="Aadhar Preview" className="w-full h-full object-cover" />
                                             ) : (
-                                                <div className="text-center text-xs text-orange-400">
+                                                <div className="text-center text-xs text-erp-accent/80">
                                                     <Icon icon="ph:identification-card-bold" className="text-4xl mb-1 mx-auto" />
                                                     <span className="font-bold">Aadhar Card Image</span>
                                                 </div>
@@ -739,7 +739,7 @@ const Registration = () => {
                                                 <button
                                                     type="button"
                                                     onClick={() => handleUpload('aadhar')}
-                                                    className="text-[10px] bg-orange-500 text-white px-4 py-1.5 rounded-full uppercase font-black hover:bg-orange-600 transition-colors shadow-md"
+                                                    className="text-[10px] bg-erp-accent text-white px-4 py-1.5 rounded-full uppercase font-black hover:bg-erp-accent/90 transition-colors shadow-md"
                                                 >
                                                     {images.aadhar.uploading ? '...' : 'Upload'}
                                                 </button>
@@ -756,12 +756,12 @@ const Registration = () => {
                                         <input type="file" hidden ref={panInputRef} onChange={(e) => handleFileSelect(e, 'pan')} accept="image/*" />
                                         <div
                                             onClick={() => panInputRef.current.click()}
-                                            className={`w-40 h-28 border-2 border-dashed rounded-2xl flex items-center justify-center overflow-hidden cursor-pointer transition-all shadow-sm ${formik.touched.panCard && formik.errors.panCard ? 'border-red-500 bg-red-50' : 'border-orange-300 hover:bg-orange-50'}`}
+                                            className={`w-40 h-28 border-2 border-dashed rounded-2xl flex items-center justify-center overflow-hidden cursor-pointer transition-all shadow-sm ${formik.touched.panCard && formik.errors.panCard ? 'border-red-500 bg-red-50' : 'border-erp-accent/30 hover:bg-erp-accent/5'}`}
                                         >
                                             {images.pan.preview ? (
                                                 <img src={images.pan.preview} alt="PAN Preview" className="w-full h-full object-cover" />
                                             ) : (
-                                                <div className="text-center text-xs text-orange-400">
+                                                <div className="text-center text-xs text-erp-accent/80">
                                                     <Icon icon="ph:credit-card-bold" className="text-4xl mb-1 mx-auto" />
                                                     <span className="font-bold">PAN Card Image</span>
                                                 </div>
@@ -772,7 +772,7 @@ const Registration = () => {
                                                 <button
                                                     type="button"
                                                     onClick={() => handleUpload('pan')}
-                                                    className="text-[10px] bg-orange-500 text-white px-4 py-1.5 rounded-full uppercase font-black hover:bg-orange-600 transition-colors shadow-md"
+                                                    className="text-[10px] bg-erp-accent text-white px-4 py-1.5 rounded-full uppercase font-black hover:bg-erp-accent/90 transition-colors shadow-md"
                                                 >
                                                     {images.pan.uploading ? '...' : 'Upload'}
                                                 </button>
@@ -800,7 +800,7 @@ const Registration = () => {
                             type="button"
                             onClick={handleSaveDraft}
                             disabled={savingDraft}
-                            className="px-16 py-4 rounded-full border-2 border-orange-500 text-orange-500 font-bold hover:bg-orange-50 transition-all uppercase tracking-widest min-w-[240px] disabled:opacity-50"
+                            className="px-16 py-4 rounded-full border-2 border-orange-500 text-erp-accent font-bold hover:bg-erp-accent/5 transition-all uppercase tracking-widest min-w-[240px] disabled:opacity-50"
                         >
                             {savingDraft ? 'Saving...' : draftEmployeeId ? 'Update Draft' : 'Save as Draft'}
                         </button>
@@ -812,3 +812,5 @@ const Registration = () => {
 };
 
 export default Registration;
+
+

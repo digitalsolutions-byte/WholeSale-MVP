@@ -89,3 +89,5 @@ export const FirmCompanyDetails = ({ wrapInput, configs, formik, handleFileUploa
         )}
     </div>
 );
+
+

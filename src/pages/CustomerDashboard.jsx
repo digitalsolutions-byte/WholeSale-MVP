@@ -34,7 +34,7 @@ const CustomerDashboard = () => {
                 </div>
 
                 <div className="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 flex items-center gap-5 hover:shadow-md transition-shadow">
-                    <div className="w-14 h-14 rounded-2xl bg-amber-50 text-erp-accent flex items-center justify-center border border-erp-accent/10 shadow-inner">
+                    <div className="w-14 h-14 rounded-2xl bg-erp-accent/5 text-erp-accent flex items-center justify-center border border-erp-accent/10 shadow-inner">
                         <Icon icon="mdi:finance" className="text-3xl" />
                     </div>
                     <div>
@@ -76,7 +76,7 @@ const CustomerDashboard = () => {
                         </div>
                         <div className="flex justify-between items-center py-3">
                             <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Zone / Region</span>
-                            <span className="text-sm font-semibold text-erp-accent/80 bg-amber-50 px-3 py-1 rounded-lg border border-erp-accent/10">{user?.zone?.name || '---'}</span>
+                            <span className="text-sm font-semibold text-erp-accent/80 bg-erp-accent/5 px-3 py-1 rounded-lg border border-erp-accent/10">{user?.zone?.name || '---'}</span>
                         </div>
                     </div>
                 </div>
@@ -105,3 +105,5 @@ const CustomerDashboard = () => {
 };
 
 export default CustomerDashboard;
+
+

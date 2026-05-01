@@ -99,3 +99,5 @@ export const CustomerInfo = ({ wrapInput, configs, formik, aadharRef, panRef, gs
         />}
     </div>
 );
+
+

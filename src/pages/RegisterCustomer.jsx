@@ -1088,7 +1088,7 @@ export default function RegisterCustomer() {
                                                         ? 'bg-erp-accent text-white shadow-lg rotate-12 scale-110'
                                                         : isCompleted
                                                             ? 'bg-green-500 text-white'
-                                                            : 'bg-gray-100 text-gray-400 group-hover:bg-orange-50'
+                                                            : 'bg-gray-100 text-gray-400 group-hover:bg-erp-accent/5'
                                                     }`}>
                                                     {hasError ? <Icon icon="mdi:alert-circle" className="text-xl" /> : (isCompleted ? <Icon icon="mdi:check" className="text-xl" /> : <span className="font-black italic text-lg">{idx + 1}</span>)}
                                                 </div>
@@ -1106,7 +1106,7 @@ export default function RegisterCustomer() {
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 ${isActive ? (hasError ? 'bg-red-50 rotate-180' : 'bg-orange-50 rotate-180') : 'bg-gray-50'}`}>
+                                            <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500 ${isActive ? (hasError ? 'bg-red-50 rotate-180' : 'bg-erp-accent/5 rotate-180') : 'bg-gray-50'}`}>
                                                 <Icon icon="mdi:chevron-down" className={`text-xl ${isActive ? (hasError ? 'text-red-500' : 'text-erp-accent') : 'text-gray-400'}`} />
                                             </div>
                                         </button>
@@ -1238,5 +1238,7 @@ export default function RegisterCustomer() {
         </div>
     );
 }
+
+
 
 

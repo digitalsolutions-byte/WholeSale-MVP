@@ -10,7 +10,7 @@ const Dashboard = () => {
     const metrics = [
         { label: 'Pending Orders', value: '24', color: 'text-blue-600' },
         { label: 'Inventory (Lenses)', value: '1,250', color: 'text-green-600' },
-        { label: 'Production Units', value: '142', color: 'text-orange-600' },
+        { label: 'Production Units', value: '142', color: 'text-erp-accent/90' },
     ];
 
     return (
@@ -83,7 +83,7 @@ const Dashboard = () => {
                                 <td className="px-6 py-4 font-medium">#9913</td>
                                 <td className="px-6 py-4">Single Vision</td>
                                 <td className="px-6 py-4">
-                                    <span className="px-3 py-1 bg-orange-50 text-orange-600 text-xs font-bold rounded-full">Cutting</span>
+                                    <span className="px-3 py-1 bg-erp-accent/5 text-erp-accent/90 text-xs font-bold rounded-full">Cutting</span>
                                 </td>
                                 <td className="px-6 py-4 font-semibold text-gray-600">40%</td>
                             </tr>
@@ -121,3 +121,5 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+

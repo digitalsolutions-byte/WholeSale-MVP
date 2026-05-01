@@ -168,7 +168,7 @@ const AddStore = () => {
             </div>
 
             {/* <div className="flex justify-center gap-6 mt-12">
-                <button onClick={() => console.log('Draft')} className="px-8 py-3 rounded-full border-2 border-erp-accent text-erp-accent font-semibold hover:bg-amber-50 transition-colors min-w-[160px]">
+                <button onClick={() => console.log('Draft')} className="px-8 py-3 rounded-full border-2 border-erp-accent text-erp-accent font-semibold hover:bg-erp-accent/5 transition-colors min-w-[160px]">
                     Create Draft
                 </button>
                 <button onClick={() => console.log('Submit')} className="px-8 py-3 rounded-full bg-erp-accent text-white font-semibold hover:bg-erp-accent/80 shadow-lg shadow-erp-accent/30 transition-all min-w-[160px]">
@@ -262,3 +262,5 @@ const AddStore = () => {
 };
 
 export default AddStore;
+
+

@@ -109,7 +109,7 @@ const Login = () => {
                                 maxWidth: '80%'
                             }}
                         >
-                            <Typography variant="h6" fontWeight={800} color="accent.main">
+                            <Typography variant="h6" fontWeight={800} color="primary.main">
                                 Hello!
                             </Typography>
                             <Typography variant="body2" fontWeight={600} color="text.secondary">
@@ -141,9 +141,7 @@ const Login = () => {
                     >
                         <Box sx={{ mb: 6, textAlign: 'center' }}>
                             <img src={logo} className='mx-auto' alt="Logo" style={{ height: '50px', marginBottom: '24px' }} />
-                            <Typography variant="h4" fontWeight={900} color="primary.main" >
-                                Sign In
-                            </Typography>
+
                         </Box>
 
                         <Stack component="form" onSubmit={formik.handleSubmit} spacing={3}>
@@ -198,3 +196,5 @@ const Login = () => {
 };
 
 export default Login;
+
+

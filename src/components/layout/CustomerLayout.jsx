@@ -75,12 +75,12 @@ const CustomerLayout = () => {
     return (
         <Box sx={{ minHeight: '100vh', bgcolor: '#FDFCFB', display: 'flex', flexDirection: 'column' }}>
             {/* Elegant Header */}
-            <AppBar 
-                position="sticky" 
-                elevation={0} 
-                sx={{ 
-                    bgcolor: 'rgba(255, 255, 255, 0.8)', 
-                    backdropFilter: 'blur(12px)', 
+            <AppBar
+                position="sticky"
+                elevation={0}
+                sx={{
+                    bgcolor: 'rgba(255, 255, 255, 0.8)',
+                    backdropFilter: 'blur(12px)',
                     borderBottom: '1px solid',
                     borderColor: alpha(theme.palette.accent.main, 0.1)
                 }}
@@ -88,11 +88,11 @@ const CustomerLayout = () => {
                 <Container maxWidth="xl">
                     <Toolbar disableGutters sx={{ py: 1.5, justifyContent: 'space-between' }}>
                         <Stack direction="row" spacing={3} alignItems="center">
-                            <Box 
-                                sx={{ 
-                                    p: 1.2, 
-                                    borderRadius: '16px', 
-                                    bgcolor: 'white', 
+                            <Box
+                                sx={{
+                                    p: 1.2,
+                                    borderRadius: '16px',
+                                    bgcolor: 'white',
                                     boxShadow: '0 4px 12px rgba(255, 99, 0, 0.08)',
                                     display: 'flex',
                                     border: '1px solid rgba(255, 99, 0, 0.1)'
@@ -100,7 +100,7 @@ const CustomerLayout = () => {
                             >
                                 <img src={logo} alt="DigiOptics" style={{ height: '24px' }} />
                             </Box>
-                            
+
                             <Box sx={{ display: { xs: 'none', md: 'block' } }}>
                                 <Typography variant="caption" sx={{ color: 'accent.main', fontWeight: 800, letterSpacing: 2, textTransform: 'uppercase' }}>
                                     Customer Portal
@@ -112,23 +112,23 @@ const CustomerLayout = () => {
                         </Stack>
 
                         <Stack direction="row" spacing={2} alignItems="center">
-                            <Chip 
-                                label={user?.customerCode || 'GUEST'} 
+                            <Chip
+                                label={user?.customerCode || 'GUEST'}
                                 size="small"
-                                sx={{ 
-                                    bgcolor: alpha(theme.palette.accent.main, 0.1), 
-                                    color: 'accent.main', 
+                                sx={{
+                                    bgcolor: alpha(theme.palette.accent.main, 0.1),
+                                    color: 'accent.main',
                                     fontWeight: 800,
                                     borderRadius: '8px'
-                                }} 
+                                }}
                             />
                             <Button
                                 variant="outlined"
                                 color="error"
                                 onClick={handleLogout}
                                 startIcon={<Icon icon="mdi:logout" />}
-                                sx={{ 
-                                    borderRadius: '50px', 
+                                sx={{
+                                    borderRadius: '50px',
                                     borderWidth: '1.5px',
                                     px: 3,
                                     '&:hover': { borderWidth: '1.5px', bgcolor: alpha(theme.palette.error.main, 0.05) }
@@ -179,9 +179,9 @@ const CustomerLayout = () => {
             </Box>
 
             {/* Terms & Conditions Dialog */}
-            <Dialog 
-                open={showTermsModal} 
-                maxWidth="sm" 
+            <Dialog
+                open={showTermsModal}
+                maxWidth="sm"
                 fullWidth
                 PaperProps={{
                     sx: { borderRadius: '24px', p: 1 }
@@ -201,12 +201,12 @@ const CustomerLayout = () => {
                             <Typography variant="subtitle1" fontWeight={700} color="text.primary">Digi-Optics Customer Agreement</Typography>
                             By accessing and using the Digi-Optics Customer Portal, you agree to be bound by the following terms and conditions.
                         </Box>
-                        
+
                         <Box sx={{ mb: 2 }}>
                             <Typography variant="subtitle2" fontWeight={700} color="text.primary">1. Account Responsibility</Typography>
                             You are responsible for maintaining the confidentiality of your account credentials.
                         </Box>
-                        
+
                         <Box sx={{ mb: 2 }}>
                             <Typography variant="subtitle2" fontWeight={700} color="text.primary">2. Order & Payment Terms</Typography>
                             All orders placed through the portal are subject to acceptance and availability.
@@ -218,18 +218,18 @@ const CustomerLayout = () => {
                     </Typography>
                 </DialogContent>
                 <DialogActions sx={{ p: 3, justifyContent: 'center', gap: 2 }}>
-                    <Button 
-                        onClick={handleDeclineTerms} 
+                    <Button
+                        onClick={handleDeclineTerms}
                         sx={{ color: 'text.secondary', fontWeight: 700 }}
                     >
                         Decline & Logout
                     </Button>
-                    <Button 
-                        onClick={handleAcceptTerms} 
-                        variant="contained" 
+                    <Button
+                        onClick={handleAcceptTerms}
+                        variant="contained"
                         disabled={termsAccepting}
-                        sx={{ 
-                            bgcolor: 'accent.main', 
+                        sx={{
+                            bgcolor: 'accent.main',
                             '&:hover': { bgcolor: 'accent.dark' },
                             px: 5,
                             borderRadius: '50px',
@@ -246,3 +246,5 @@ const CustomerLayout = () => {
 };
 
 export default CustomerLayout;
+
+

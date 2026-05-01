@@ -1,68 +1,75 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import logo from '../../assets/logo.png';
+import { Box, Typography, Paper, Stack, alpha, useTheme } from '@mui/material';
+import logo from '../../assets/logo.svg';
 import futuristicBg from '../../assets/futuristic-bg.png';
-import { Icon } from '@iconify/react';
-import { 
-    Box, 
-    Typography, 
-    Container, 
-    Stack, 
-    useTheme, 
-    alpha,
-    Paper
-} from '@mui/material';
 
 const AuthLayout = () => {
     const theme = useTheme();
 
     return (
-        <Box 
-            sx={{ 
-                minHeight: '100vh', 
-                display: 'flex', 
+        <Box
+            sx={{
+                minHeight: '100vh',
+                bgcolor: '#121212',
+                display: 'flex',
                 flexDirection: 'column',
-                background: 'radial-gradient(circle at 0% 0%, #1a1a1a 0%, #000000 100%)',
                 position: 'relative',
                 overflow: 'hidden'
             }}
         >
-            {/* Minimal Header */}
-            <Box 
-                component="header" 
-                sx={{ 
-                    position: 'relative', 
-                    zIndex: 20, 
-                    px: 4, 
-                    py: 2.5, 
-                    display: 'flex', 
-                    alignItems: 'center', 
+            {/* Background Glows */}
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: -200,
+                    right: -200,
+                    width: 600,
+                    height: 600,
+                    bgcolor: alpha(theme.palette.accent.main, 0.15),
+                    borderRadius: '50%',
+                    filter: 'blur(150px)',
+                    zIndex: 0
+                }}
+            />
+
+            {/* Header */}
+            <Box
+                component="header"
+                sx={{
+                    position: 'relative',
+                    zIndex: 20,
+                    px: { xs: 3, md: 6 },
+                    py: 4,
+                    display: 'flex',
+                    alignItems: 'center',
                     justifyContent: 'space-between',
                     borderBottom: '1px solid rgba(255,255,255,0.05)',
                     backdropFilter: 'blur(10px)'
                 }}
             >
-                <Stack direction="row" spacing={1.5} alignItems="center">
-                    <Box 
-                        sx={{ 
-                            height: 42, 
-                            width: 42, 
-                            bgcolor: 'accent.main', 
-                            borderRadius: '12px', 
-                            display: 'flex', 
-                            alignItems: 'center', 
+                <Stack direction="row" alignItems="center" spacing={2}>
+                    <Box
+                        sx={{
+                            width: 48,
+                            height: 48,
+                            bgcolor: 'accent.main',
+                            borderRadius: '16px',
+                            display: 'flex',
+                            alignItems: 'center',
                             justifyContent: 'center',
-                            boxShadow: '0 0 20px rgba(255, 99, 0, 0.4)'
+                            boxShadow: `0 8px 24px ${alpha(theme.palette.accent.main, 0.4)}`,
+                            transform: 'rotate(-5deg)'
                         }}
                     >
                         <img src={logo} alt="Logo" style={{ height: '24px', filter: 'brightness(0) invert(1)' }} />
                     </Box>
-                    <Typography 
-                        variant="h5" 
-                        sx={{ 
-                            color: 'white', 
-                            fontWeight: 900, 
-                            letterSpacing: '-0.5px', 
+                    <Typography
+                        variant="h5"
+                        sx={{
+                            color: 'white',
+                            fontWeight: 900,
+                            letterSpacing: '-0.5px',
                             textTransform: 'uppercase',
                             fontStyle: 'italic'
                         }}
@@ -73,8 +80,8 @@ const AuthLayout = () => {
 
                 <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 3 }}>
                     <Box sx={{ h: 2, w: 60, bgcolor: 'rgba(255,255,255,0.1)', borderRadius: 1 }} />
-                    <Typography 
-                        variant="caption" 
+                    <Typography
+                        variant="caption"
                         sx={{ color: 'rgba(255,255,255,0.4)', fontWeight: 800, letterSpacing: '4px', textTransform: 'uppercase' }}
                     >
                         Enterprise System v5.0
@@ -85,31 +92,31 @@ const AuthLayout = () => {
             {/* Main Content */}
             <Box component="main" sx={{ flexGrow: 1, display: 'flex', position: 'relative' }}>
                 {/* Left Side: Visuals */}
-                <Box 
-                    sx={{ 
-                        display: { xs: 'none', md: 'flex' }, 
-                        width: '50%', 
-                        position: 'relative', 
-                        alignItems: 'center', 
+                <Box
+                    sx={{
+                        display: { xs: 'none', md: 'flex' },
+                        width: '50%',
+                        position: 'relative',
+                        alignItems: 'center',
                         justifyContent: 'center',
                         p: 6
                     }}
                 >
-                    <Box 
-                        sx={{ 
-                            position: 'absolute', 
-                            top: '20%', 
-                            left: '-10%', 
-                            width: 500, 
-                            height: 500, 
-                            bgcolor: alpha(theme.palette.accent.main, 0.08), 
-                            borderRadius: '50%', 
-                            filter: 'blur(120px)' 
-                        }} 
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            top: '20%',
+                            left: '-10%',
+                            width: 500,
+                            height: 500,
+                            bgcolor: alpha(theme.palette.accent.main, 0.08),
+                            borderRadius: '50%',
+                            filter: 'blur(120px)'
+                        }}
                     />
-                    
+
                     <Box sx={{ position: 'relative', zIndex: 10, width: '100%', maxWidth: 600 }}>
-                        <Box 
+                        <Box
                             component="img"
                             src={futuristicBg}
                             alt="Futuristic Optics"
@@ -148,18 +155,18 @@ const AuthLayout = () => {
                 </Box>
 
                 {/* Right Side: Form */}
-                <Box 
-                    sx={{ 
-                        width: { xs: '100%', md: '50%' }, 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        justifyContent: 'center', 
+                <Box
+                    sx={{
+                        width: { xs: '100%', md: '50%' },
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         p: 4,
                         position: 'relative'
                     }}
                 >
                     <Box sx={{ position: 'absolute', inset: 0, bgcolor: alpha(theme.palette.accent.main, 0.02), blur: '100px', pointerEvents: 'none' }} />
-                    
+
                     <Box sx={{ width: '100%', maxWidth: 480, position: 'relative', zIndex: 10 }}>
                         <Paper
                             elevation={24}
@@ -174,19 +181,19 @@ const AuthLayout = () => {
                             }}
                         >
                             {/* Decorative corner */}
-                            <Box 
-                                sx={{ 
-                                    position: 'absolute', 
-                                    top: -20, 
-                                    right: -20, 
-                                    width: 100, 
-                                    height: 100, 
-                                    bgcolor: 'accent.main', 
-                                    transform: 'rotate(45deg)', 
-                                    opacity: 0.1 
-                                }} 
+                            <Box
+                                sx={{
+                                    position: 'absolute',
+                                    top: -20,
+                                    right: -20,
+                                    width: 100,
+                                    height: 100,
+                                    bgcolor: 'accent.main',
+                                    transform: 'rotate(45deg)',
+                                    opacity: 0.1
+                                }}
                             />
-                            
+
                             <Outlet />
                         </Paper>
                     </Box>
@@ -194,15 +201,15 @@ const AuthLayout = () => {
             </Box>
 
             {/* Footer */}
-            <Box 
-                component="footer" 
-                sx={{ 
-                    position: 'relative', 
-                    zIndex: 20, 
-                    px: 6, 
-                    py: 3, 
-                    display: 'flex', 
-                    justifyContent: 'space-between', 
+            <Box
+                component="footer"
+                sx={{
+                    position: 'relative',
+                    zIndex: 20,
+                    px: 6,
+                    py: 3,
+                    display: 'flex',
+                    justifyContent: 'space-between',
                     alignItems: 'center',
                     borderTop: '1px solid rgba(255,255,255,0.05)',
                     backdropFilter: 'blur(10px)'
@@ -213,12 +220,12 @@ const AuthLayout = () => {
                 </Typography>
                 <Stack direction="row" spacing={4}>
                     {['Privacy', 'Terms', 'Support'].map((link) => (
-                        <Typography 
-                            key={link} 
-                            variant="caption" 
-                            sx={{ 
-                                color: 'rgba(255,255,255,0.2)', 
-                                fontWeight: 800, 
+                        <Typography
+                            key={link}
+                            variant="caption"
+                            sx={{
+                                color: 'rgba(255,255,255,0.2)',
+                                fontWeight: 800,
                                 cursor: 'pointer',
                                 transition: 'color 0.2s',
                                 '&:hover': { color: 'accent.main' }

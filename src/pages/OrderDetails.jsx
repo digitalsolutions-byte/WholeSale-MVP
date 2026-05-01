@@ -49,7 +49,7 @@ const OrderDetails = () => {
             case 'PROCESSING': return 'bg-blue-50 text-blue-600 border-blue-200 shadow-blue-500/10';
             case 'COMPLETED': return 'bg-green-50 text-green-600 border-green-200 shadow-green-500/10';
             case 'CANCELLED': return 'bg-red-50 text-red-600 border-red-200 shadow-red-500/10';
-            case 'DRAFT': return 'bg-amber-50 text-erp-accent/80 border-amber-200 shadow-erp-accent/10';
+            case 'DRAFT': return 'bg-erp-accent/5 text-erp-accent/80 border-amber-200 shadow-erp-accent/10';
             default: return 'bg-gray-50 text-gray-600 border-gray-200';
         }
     };
@@ -57,7 +57,7 @@ const OrderDetails = () => {
     const InfoCard = ({ title, icon, children, className = "" }) => (
         <div className={`bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-300 ${className}`}>
             <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-2xl bg-amber-50 flex items-center justify-center text-erp-accent shadow-sm">
+                <div className="w-10 h-10 rounded-2xl bg-erp-accent/5 flex items-center justify-center text-erp-accent shadow-sm">
                     <Icon icon={icon} className="text-xl" />
                 </div>
                 <h3 className="text-xs font-black text-gray-400 uppercase tracking-[0.15em]">{title}</h3>
@@ -75,7 +75,7 @@ const OrderDetails = () => {
 
     const EyeDetailCard = ({ side, data, prism, centration }) => (
         <div className="bg-white rounded-[2.5rem] border border-gray-100 shadow-xl overflow-hidden group hover:border-amber-200 transition-colors duration-300">
-            <div className={`py-4 px-8 border-b border-gray-50 flex items-center justify-between ${side === 'R' ? 'bg-orange-50/30' : 'bg-blue-50/30'}`}>
+            <div className={`py-4 px-8 border-b border-gray-50 flex items-center justify-between ${side === 'R' ? 'bg-erp-accent/5/30' : 'bg-blue-50/30'}`}>
                 <div className="flex items-center gap-3">
                     <div className={`w-10 h-10 rounded-2xl flex items-center justify-center font-black text-xl text-white shadow-lg ${side === 'R' ? 'bg-[#fe9a00] rotate-3' : 'bg-blue-500 -rotate-3'}`}>
                         {side}
@@ -188,7 +188,7 @@ const OrderDetails = () => {
                                     )}
                                 </div>
                             </div>
-                            <div className="flex items-start gap-3 bg-amber-50/50 p-4 rounded-2xl border border-amber-100">
+                            <div className="flex items-start gap-3 bg-erp-accent/5/50 p-4 rounded-2xl border border-erp-accent/10">
                                 <div className="p-2 rounded-xl bg-amber-100/50 text-erp-accent/80">
                                     <Icon icon="mdi:map-marker-radius" className="text-lg" />
                                 </div>
@@ -253,7 +253,7 @@ const OrderDetails = () => {
 
                             <div className="flex gap-2">
                                 {order.hasMirror && <span className="flex-1 py-1.5 bg-blue-50 text-blue-600 text-[9px] font-black uppercase tracking-widest text-center border border-blue-100 rounded-lg">Mirror Coat</span>}
-                                <span className="flex-1 py-1.5 bg-orange-50 text-orange-600 text-[9px] font-black uppercase tracking-widest text-center border border-orange-100 rounded-lg">Anti-Reflective</span>
+                                <span className="flex-1 py-1.5 bg-erp-accent/5 text-erp-accent/90 text-[9px] font-black uppercase tracking-widest text-center border border-orange-100 rounded-lg">Anti-Reflective</span>
                             </div>
                         </div>
                     </InfoCard>
@@ -343,3 +343,5 @@ const OrderDetails = () => {
 };
 
 export default OrderDetails;
+
+
